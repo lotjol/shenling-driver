@@ -1,0 +1,22 @@
+.page-container {
+  height: 100vh;
+  /* #ifdef H5 */
+  height: calc(100vh - 44px);
+  /* #endif */
+  padding: 30rpx;
+}
+
+.settings-list {
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.logout-button {
+  height: 100rpx;
+  line-height: 100rpx;
+  margin-top: 80rpx;
+  border-radius: 16rpx;
+  background-color: #fff;
+  color: $uni-main-color;
+  font-size: $uni-font-size-base;
+}

@@ -1,0 +1,30 @@
+.content {
+  padding: 20rpx 30rpx;
+}
+
+.search-bar {
+  position: relative;
+
+  .icon-search {
+    position: absolute;
+    top: 15rpx;
+    left: 20rpx;
+    color: $uni-secondary-color;
+    font-size: $uni-font-size-base;
+  }
+
+  .input {
+    height: 64rpx;
+    background-color: #f4f4f4;
+    border-radius: 64rpx;
+    padding-left: 64rpx;
+    font-size: $uni-font-size-small;
+  }
+}
+
+.transit-order {
+  padding: 30rpx 10rpx 10rpx;
+  line-height: 2;
+  font-size: $uni-font-size-small;
+  color: $uni-main-color;
+}

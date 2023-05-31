@@ -1,0 +1,22 @@
+.page-container {
+  background-color: #fff;
+  padding: 40rpx;
+
+  .title {
+    font-size: 34rpx;
+    color: $uni-main-color;
+    font-weight: 700;
+    margin-bottom: 20rpx;
+  }
+
+  .time {
+    font-size: $uni-font-size-small;
+    color: $uni-secondary-color;
+  }
+
+  .content {
+    line-height: 1.75;
+    font-size: 30rpx;
+    color: $uni-main-color;
+  }
+}

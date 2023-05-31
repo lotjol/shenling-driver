@@ -1,0 +1,100 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.map {
+  width: 750rpx;
+  height: 100vh;
+  /* #ifdef H5 */
+  height: calc(100vh - 44px);
+  /* #endif  */
+}
+
+.meta {
+  position: absolute;
+  top: 30rpx;
+  left: 30rpx;
+  right: 30rpx;
+  z-index: 99;
+  border-radius: 16rpx;
+  background-color: #fff;
+}
+
+.label {
+  font-size: $uni-font-size-small;
+  line-height: normal;
+  margin: 30rpx;
+  color: $uni-secondary-color;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 140rpx;
+  margin: 30rpx;
+  position: relative;
+  overflow: visible;
+
+  .start,
+  .end {
+    position: absolute;
+    left: 0;
+    width: 44rpx;
+    height: 44rpx;
+    text-align: center;
+    line-height: 44rpx;
+    /* #ifdef APP-PLUS */
+    line-height: 36rpx;
+    /* #endif */
+    font-size: 24rpx;
+    color: #fff;
+    border-radius: 50%;
+  }
+
+  .start {
+    top: -2rpx;
+    /* #ifdef APP-PLUS */
+    top: 0;
+    /* #endif */
+    background-color: $uni-main-color;
+  }
+
+  .end {
+    bottom: 0;
+    background-color: $uni-primary;
+  }
+
+  .line {
+    line-height: 1.5;
+    /* #ifdef APP-PLUS */
+    white-space: normal;
+    line-height: normal;
+    /* #endif */
+    font-size: $uni-font-size-small;
+    color: $uni-secondary-color;
+    margin-left: 60rpx;
+  }
+}
+
+.toolbar {
+  width: 750rpx;
+  background-color: #fff;
+  position: absolute;
+  bottom: env(safe-area-inset-bottom);
+  z-index: 99;
+
+  .button {
+    width: 400rpx;
+    height: 100rpx;
+    text-align: center;
+    line-height: 100rpx;
+    margin: 20rpx auto;
+    color: #fff;
+    font-size: $uni-font-size-base;
+    background-color: $uni-primary;
+    border-radius: 100rpx;
+  }
+}

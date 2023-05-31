@@ -1,0 +1,51 @@
+.page-container {
+  padding: 30rpx 30rpx env(safe-area-inset-bottom);
+
+  ::v-deep .uni-list {
+    border-radius: 16rpx;
+    overflow: hidden;
+  }
+
+  .time-picker {
+    color: $uni-secondary-color;
+    font-size: $uni-font-size-base;
+  }
+
+  ::v-deep .uni-icon-wrapper {
+    padding-left: 0;
+  }
+
+  .textarea-wrapper {
+    position: relative;
+  }
+
+  .textarea {
+    width: 100%;
+    height: 260rpx;
+    font-size: $uni-font-size-base;
+    padding: 20rpx 28rpx;
+    background-color: #f4f4f4;
+    border-radius: 16rpx;
+    box-sizing: border-box;
+    color: $uni-main-color;
+  }
+
+  .words-count {
+    position: absolute;
+    bottom: 10rpx;
+    right: 30rpx;
+    color: $uni-secondary-color;
+    font-size: $uni-font-size-small;
+  }
+
+  .button {
+    width: 414rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    margin: -20rpx auto 20rpx;
+    color: #fff;
+    font-size: $uni-font-size-base;
+    border-radius: 100rpx;
+    background-color: #fadcd9;
+  }
+}

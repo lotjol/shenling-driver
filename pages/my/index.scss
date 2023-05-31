@@ -1,0 +1,76 @@
+.page-container {
+  height: 100vh;
+  /* #ifdef H5 */
+  height: calc(100vh - 50px);
+  /* #endif  */
+}
+
+.user-profile {
+  height: 600rpx;
+  padding-top: env(safe-area-inset-top);
+  background-image: url(https://sl-driver.oss-cn-hangzhou.aliyuncs.com/images/profile-bg%402x.png);
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  line-height: 1.8;
+  font-size: 30rpx;
+
+  .avatar {
+    width: 140rpx;
+    height: 140rpx;
+    margin-top: 90rpx;
+    border-radius: 50%;
+    border: 6rpx solid rgba(255, 255, 255, 0.4);
+  }
+
+  .username {
+    font-size: 36rpx;
+    margin: 10rpx 0;
+  }
+}
+
+.month-overview {
+  height: 268rpx;
+  margin: 0 30rpx;
+  border-radius: 16rpx;
+  background-color: #fff;
+  position: relative;
+  top: -130rpx;
+
+  .title {
+    color: $uni-secondary-color;
+    font-size: $uni-font-size-small;
+    padding-top: 28rpx;
+    text-align: center;
+
+    &::after,
+    &::before {
+      content: '-';
+      margin: 0 5rpx;
+    }
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    font-size: $uni-font-size-small;
+    color: $uni-main-color;
+    margin-top: 40rpx;
+
+    .volumn {
+      display: block;
+      font-size: 36rpx;
+      margin-bottom: 20rpx;
+      font-weight: 500;
+    }
+  }
+}
+
+.entry-list {
+  margin: -100rpx 30rpx 0;
+  border-radius: 16rpx;
+  overflow: hidden;
+}

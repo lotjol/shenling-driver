@@ -1,0 +1,25 @@
+.page-container {
+  height: 100vh;
+  /* #ifdef H5 */
+  height: calc(100vh - 44px);
+  /* #endif */
+}
+
+.data-overview {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  height: 200rpx;
+  margin: 40rpx 0;
+  font-size: $uni-font-size-small;
+  color: $uni-main-color;
+  background-color: #fff;
+
+  .volumn {
+    display: block;
+    font-size: 36rpx;
+    margin-bottom: 20rpx;
+    font-weight: 500;
+  }
+}

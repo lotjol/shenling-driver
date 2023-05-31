@@ -1,0 +1,108 @@
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+
+/**
+ * useless 没有任何组件在使用该变量
+ * useless* 有组件在使用该变量，但都进行了重新定义
+ * uesless+ 有组件在使用该变量，部分进行重新定义
+ */
+
+/* 颜色变量 */
+@import '@/uni_modules/uni-scss/variables.scss';
+
+/* 行为相关颜色 */
+$uni-color-primary: #007aff; // useless
+$uni-color-success: #4cd964; // useless
+$uni-color-warning: #f0ad4e; // useless
+$uni-color-error: #dd524d; // useless*
+
+/* 文字基本颜色 */
+$uni-text-color: #333; //基本色 useless*
+$uni-text-color-inverse: #fff; // 反色 useless
+$uni-text-color-grey: #999; // 辅助灰色，如加载更多的提示信息 useless*
+$uni-text-color-placeholder: #808080; // useless*
+$uni-text-color-disable: #c0c0c0; // useless*
+
+/* 背景颜色 */
+$uni-bg-color: #ffffff; // useless+
+$uni-bg-color-grey: #f8f8f8; // useless
+$uni-bg-color-hover: #f1f1f1; //点击状态颜色 // useless*
+$uni-bg-color-mask: rgba(0, 0, 0, 0.4); //遮罩颜色 // useless*
+
+/* 边框颜色 */
+$uni-border-color: #c8c7cc; // useless*
+
+/* 尺寸变量 */
+
+/* 文字尺寸 */
+$uni-font-size-sm: 12px; // useless*
+$uni-font-size-base: 14px; // useless*
+$uni-font-size-lg: 16; // useless*
+
+/* 图片尺寸 */
+$uni-img-size-sm: 20px; // useless*
+$uni-img-size-base: 26px; // useless*
+$uni-img-size-lg: 40px; // useless*
+
+/* Border Radius */
+$uni-border-radius-sm: 2px; // useless
+$uni-border-radius-base: 3px; // useless
+$uni-border-radius-lg: 6px; // useless
+$uni-border-radius-circle: 50%; // useless
+
+/* 水平间距 */
+$uni-spacing-row-sm: 5px; // useless*
+$uni-spacing-row-base: 10px; // useless*
+$uni-spacing-row-lg: 15px; // useless+ (uni-list-ad)
+
+/* 垂直间距 */
+$uni-spacing-col-sm: 4px; // useless
+$uni-spacing-col-base: 8px; // useless
+$uni-spacing-col-lg: 12px; // useless*
+
+/* 透明度 */
+$uni-opacity-disabled: 0.3; // 组件禁用态的透明度 useless*
+
+/* 文章场景相关 */
+$uni-color-title: #2c405a; // 文章标题颜色 useless
+$uni-font-size-title: 20px; // useless
+$uni-color-subtitle: #555555; // 二级标题颜色 useless*
+$uni-font-size-subtitle: 26px; // useless
+$uni-color-paragraph: #3f536e; // 文章段落颜色 useless
+$uni-font-size-paragraph: 15px; // useless
+
+/* 主色 */
+$uni-primary: #ef4f3f;
+
+// 辅助色
+// 除了主色外的场景色，需要在不同的场景中使用（例如危险色表示危险的操作）。
+$uni-success: #27ba9b;
+$uni-warning: #e19a30;
+$uni-error: #ff4c4c;
+
+// 中性色
+// 中性色用于文本、背景和边框颜色。通过运用不同的中性色，来表现层次结构。
+$uni-main-color: #2a2929; // 主要文字
+$uni-secondary-color: #818181; // 次要文字
+
+// 边框颜色
+$uni-border-1: #f4f4f4;
+$uni-border-3: #f4f4f4;
+
+// 背景色
+$uni-bg-color: #f4f4f4;
+
+// 字号大小
+$uni-font-size-base: 32rpx;
+$uni-font-size-small: 28rpx;

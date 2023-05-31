@@ -1,0 +1,19 @@
+.page-container {
+  height: 100vh;
+  /* #ifdef H5 */
+  height: calc(100vh - 44px);
+  /* #endif */
+  padding-top: 30rpx;
+
+  .tips {
+    padding-left: 40rpx;
+    margin-bottom: 10rpx;
+    font-size: 24rpx;
+    color: $uni-secondary-color;
+  }
+
+  ::v-deep .uni-list-item__container {
+    align-items: center;
+    padding-left: 40rpx;
+  }
+}

@@ -1,0 +1,62 @@
+<script>
+  export default {
+    onLaunch: function () {
+      // console.log('App Launch')
+    },
+    onShow: function () {
+      // console.log('App Show')
+    },
+    onHide: function () {
+      // console.log('App Hide')
+    },
+  }
+</script>
+
+<style lang="scss">
+  @import './fonts.scss';
+
+  button::after {
+    border: none;
+  }
+
+  cover-view {
+    white-space: pre-wrap;
+    /* #ifndef APP-PLUS */
+    overflow: visible;
+    /* #endif */
+  }
+
+  /*每个页面公共css */
+  .page-container {
+    box-sizing: border-box;
+    background-color: $uni-bg-color;
+  }
+
+  .uni-nav-bar-text {
+    /* #ifndef APP-PLUS */
+    font-size: 16px !important;
+    font-weight: 700;
+    /* #endif */
+  }
+
+  .uni-list-item__container {
+    padding-top: 32rpx !important;
+    padding-bottom: 32rpx !important;
+  }
+
+  .uni-list--border::after {
+    left: 30rpx !important;
+    right: 30rpx !important;
+    background-color: $uni-border-1 !important;
+  }
+
+  .uni-list-item__content-title {
+    font-size: $uni-font-size-base !important;
+    color: $uni-main-color !important;
+  }
+
+  .uni-list-item__extra-text {
+    font-size: $uni-font-size-base !important;
+    color: $uni-secondary-color !important;
+  }
+</style>

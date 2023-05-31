@@ -1,0 +1,41 @@
+.content {
+  display: flex;
+  padding: 20rpx 30rpx;
+}
+
+.transit-line {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  padding: 0 60rpx;
+  margin-bottom: 10rpx;
+  font-size: $uni-font-size-small;
+  color: $uni-main-color;
+  background-image: url(https://sl-driver.oss-cn-hangzhou.aliyuncs.com/images/transit-arrow.png);
+  background-size: 74rpx 34rpx;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  .lead {
+    display: block;
+    font-size: $uni-font-size-base;
+    font-weight: 600;
+  }
+}
+
+.guide {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 0 50rpx;
+  font-size: 24rpx;
+  color: 24rpx;
+  border-left: 2rpx solid #f4f4f4;
+
+  .iconfont {
+    margin-bottom: 10rpx;
+    font-size: 40rpx;
+  }
+}

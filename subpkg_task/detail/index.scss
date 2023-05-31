@@ -1,0 +1,83 @@
+.page-container {
+  ::v-deep .uni-nav-bar-right-text {
+    font-size: $uni-font-size-small;
+  }
+}
+
+.task-detail {
+  padding: 30rpx;
+
+  ::v-deep .uni-collapse {
+    background-color: transparent;
+  }
+
+  ::v-deep .uni-collapse-item {
+    margin-bottom: 30rpx;
+    border-radius: 16rpx;
+    overflow: hidden;
+    background-color: #fff;
+
+    /* #ifdef APP-PLUS || H5 */
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    /* #endif */
+  }
+
+  ::v-deep .uni-collapse-item__title-text {
+    font-size: $uni-font-size-base;
+    font-weight: 500;
+    color: $uni-main-color;
+  }
+}
+
+.toolbar {
+  position: sticky;
+  bottom: 0;
+  z-index: 99;
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 30rpx calc(env(safe-area-inset-bottom) + 30rpx);
+  font-size: $uni-font-size-base;
+  background-color: #fff;
+
+  .button {
+    height: 100rpx;
+    line-height: 100rpx;
+    border-radius: 100rpx;
+    font-size: $uni-font-size-base;
+  }
+
+  .delay {
+    width: 250rpx;
+    color: $uni-main-color;
+    background-color: #e6e6e6;
+  }
+
+  .primary {
+    width: 400rpx;
+    color: #fff;
+    background-color: $uni-primary;
+
+    &[disabled] {
+      background-color: #fadcd9;
+    }
+  }
+}
+
+.action-sheet {
+  background-color: #fff;
+  text-align: center;
+  font-size: $uni-font-size-base;
+  color: $uni-main-color;
+
+  .item {
+    display: block;
+    line-height: 98rpx;
+  }
+
+  .cancel {
+    border-top: 2rpx solid #f4f4f4;
+  }
+}
