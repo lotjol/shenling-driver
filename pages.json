@@ -21,51 +21,51 @@
       },
       {
         "name": "车辆信息",
-        "path": "pages/truck/index"
+        "path": "subpkg_user/truck/index"
       },
       {
         "name": "系统设置",
-        "path": "pages/settings/index"
+        "path": "subpkg_user/settings/index"
       },
       {
         "name": "换绑手机",
-        "path": "pages/mobile/index"
+        "path": "subpkg_user/mobile/index"
       },
       {
         "name": "修改密码",
-        "path": "pages/password/index"
+        "path": "subpkg_user/password/index"
       },
       {
         "name": "消息通知设置",
-        "path": "pages/notify/index"
+        "path": "subpkg_user/notify/index"
       },
       {
         "name": "消息详情",
-        "path": "pages/content/index"
+        "path": "subpkg_message/content/index"
       },
       {
         "name": "任务数据",
-        "path": "pages/data/index"
+        "path": "subpkg_task/data/index"
       },
       {
         "name": "任务详情",
-        "path": "pages/detail/index"
+        "path": "subpkg_task/detail/index"
       },
       {
         "name": "导航",
-        "path": "pages/guide/index"
+        "path": "subpkg_task/guide/index"
       },
       {
         "name": "上报异常",
-        "path": "pages/except/index"
+        "path": "subpkg_task/except/index"
       },
       {
         "name": "延迟提货",
-        "path": "pages/delay/index"
+        "path": "subpkg_task/delay/index"
       },
       {
         "name": "回车登记",
-        "path": "pages/record/index"
+        "path": "subpkg_task/record/index"
       }
     ]
   },
