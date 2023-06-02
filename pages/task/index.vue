@@ -3,6 +3,20 @@
   // 标签页索引
   const tabIndex = ref(0)
 
+  import { useUserStore } from '@/stores/user'
+  const userState = useUserStore()
+
+  uni.addInterceptor('navigateTo', {
+    invoke: () => {
+      const isLogin = !!userState.token
+      if (!isLogin) {
+        return uni.redirectTo({
+          url: '/pages/login/index',
+        })
+      }
+    },
+  })
+
   // 切换 Tab 标签页
   const changeTab = (index) => {
     tabIndex.value = index

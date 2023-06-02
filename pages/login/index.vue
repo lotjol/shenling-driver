@@ -1,12 +1,19 @@
 <script setup>
   import { ref, reactive, computed } from 'vue'
+  import { onLoad } from '@dcloudio/uni-app'
+  import { useUserStore } from '@/stores/user'
+  import userApi from '@/apis/user.js'
 
+  // 地址参数
+  const redirectURL = ref('')
+  const routeType = ref('')
+  // 用户状态
+  const userStore = useUserStore()
   // 表单项数据
   const user = reactive({
     account: '',
     password: '',
   })
-
   // 登录类型索引值
   const formIndex = ref(0)
   // 表单相关数据
@@ -49,15 +56,35 @@
       buttonText: '登录',
     },
   ])
-
   // 当前登录信息
   const formMeta = computed(() => {
     return formMetas[formIndex.value]
+  })
+  // 按钮的禁用状态
+  const disabled = computed(() => {
+    return !user.account || !user.password
   })
 
   // 切换登录类型
   function changeLoginType() {
     formIndex.value = Math.abs(formIndex.value - 1)
+  }
+
+  // 获取地址参数
+  onLoad((query) => {
+    redirectURL.value = query.redirectURL
+    routeType.value = query.routeType
+  })
+
+  // 提交登录表单
+  async function onSubmit() {
+    // 调用登录接口
+    const { code, data } = await userApi.login(user.account, user.password)
+    if (code !== 200) return uni.$utils.toast()
+    // 记录登录状态信息
+    userStore.token = 'Bearer ' + data
+    // 跳回原来的页面
+    uni[routeType.value]({ url: redirectURL.value })
   }
 </script>
 
@@ -82,7 +109,7 @@
         />
         <text v-if="field.key === 'code'" class="text-button">获取验证码</text>
       </uni-forms-item>
-      <button class="submit-button">{{ formMeta.buttonText }}</button>
+      <button class="submit-button" :disabled="disabled" @click="onSubmit">{{ formMeta.buttonText }}</button>
     </uni-forms>
   </view>
 </template>

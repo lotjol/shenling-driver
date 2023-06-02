@@ -7,7 +7,7 @@
   import slTaskException from './components/task-exception'
   import slTaskOrder from './components/task-order'
   import slTaskReceipt from './components/task-receipt'
-
+  console.log(1111)
   // 记录任务的状态
   const status = ref('')
   // 弹层实例

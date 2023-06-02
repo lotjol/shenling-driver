@@ -8,10 +8,15 @@ export const useUserStore = defineStore(
     const token = ref('')
     // 更新登录状态
     function setToken(token) {
+      console.log(token)
       token.value = token
     }
 
-    return { token }
+    return { token, setToken }
   },
-  { persist: true }
+  {
+    persist: {
+      paths: ['token'],
+    },
+  }
 )

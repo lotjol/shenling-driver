@@ -1,7 +1,21 @@
 <script>
+  import { useUserStore } from '@/stores/user'
+  import { tabBar } from './pages.json'
   export default {
     onLaunch: function () {
-      // console.log('App Launch')
+      const tabBarPagePaths = tabBar.list.map(({ pagePath }) => pagePath)
+      // 简易的登录检测
+      const userState = useUserStore()
+      const isLogin = !!userState.token
+      const pageStack = getCurrentPages()
+      const currentPage = pageStack[pageStack.length - 1]
+      const redirectURL = currentPage ? currentPage.route : 'pages/task/index'
+      const routeType = tabBarPagePaths.includes(redirectURL) ? 'switchTab' : 'redirectTo'
+      if (!isLogin) {
+        uni.redirectTo({
+          url: `/pages/login/index?redirectURL=/${redirectURL}&routeType=${routeType}`,
+        })
+      }
     },
     onShow: function () {
       // console.log('App Show')
