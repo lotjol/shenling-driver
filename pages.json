@@ -24,6 +24,10 @@
         "path": "subpkg_user/truck/index"
       },
       {
+        "name": "任务数据",
+        "path": "subpkg_user/task/index"
+      },
+      {
         "name": "系统设置",
         "path": "subpkg_user/settings/index"
       },
@@ -42,10 +46,6 @@
       {
         "name": "消息详情",
         "path": "subpkg_message/content/index"
-      },
-      {
-        "name": "任务数据",
-        "path": "subpkg_task/data/index"
       },
       {
         "name": "任务详情",
@@ -188,7 +188,7 @@
           }
         },
         {
-          "path": "data/index",
+          "path": "task/index",
           "style": {
             "navigationBarTitleText": "任务数据"
           }
