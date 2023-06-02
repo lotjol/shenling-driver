@@ -1,4 +1,18 @@
-<script setup></script>
+<script setup>
+  import { onLoad } from '@dcloudio/uni-app'
+  import userApi from '@/apis/user'
+
+  // 生命周期（页面加载完成）
+  onLoad(() => {
+    // 获取用户信息数据
+    getUserProfile()
+  })
+
+  // 用户信息接口
+  async function getUserProfile() {
+    await userApi.profile()
+  }
+</script>
 
 <template>
   <view class="page-container">
