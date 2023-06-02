@@ -28,7 +28,7 @@
     <view class="entry-list">
       <uni-list :border="false">
         <uni-list-item to="/subpkg_user/truck/index" showArrow title="车辆信息" />
-        <uni-list-item to="/subpkg_user/data/index" showArrow title="任务数据" />
+        <uni-list-item to="/subpkg_user/task/index" showArrow title="任务数据" />
         <uni-list-item to="/subpkg_user/settings/index" showArrow title="系统设置" />
       </uni-list>
     </view>
