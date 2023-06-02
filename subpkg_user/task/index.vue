@@ -1,5 +1,6 @@
 <script setup>
   import { reactive } from 'vue'
+  import slUniCalendar from './components/sl-uni-calendar/sl-uni-calendar'
 
   const selected = reactive([
     { date: '2023-03-24', info: '332 ' },
