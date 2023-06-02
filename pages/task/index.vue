@@ -9,7 +9,8 @@
   }
 
   // 跳转页面
-  const goDetail = (status, backRecord) => {
+  const goDetail = (...args) => {
+    const { status, backRecord } = args
     // 回车登记
     if (backRecord) {
       return uni.navigateTo({
