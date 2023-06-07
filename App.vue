@@ -16,7 +16,7 @@
   @import './fonts.scss';
 
   button::after {
-    border: none;
+    display: none;
   }
 
   cover-view {
