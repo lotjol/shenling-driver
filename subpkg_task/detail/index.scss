@@ -21,7 +21,6 @@
     &:last-child {
       margin-bottom: 0;
     }
-
     /* #endif */
   }
 
@@ -29,6 +28,213 @@
     font-size: $uni-font-size-base;
     font-weight: 500;
     color: $uni-main-color;
+  }
+
+  .content {
+    padding: 30rpx;
+  }
+
+  .timeline {
+    border-left: 2rpx dashed #f4f4f4;
+    margin-left: 30rpx;
+    padding: 0 30rpx;
+    position: relative;
+
+    &::before,
+    &::after {
+      position: absolute;
+      left: -24rpx;
+      width: 44rpx;
+      height: 44rpx;
+      text-align: center;
+      line-height: 44rpx;
+      font-size: 24rpx;
+      color: #fff;
+      border-radius: 50%;
+      background-color: pink;
+    }
+
+    &::before {
+      content: '起';
+      top: -1rpx;
+      background-color: $uni-main-color;
+    }
+
+    &::after {
+      content: '止';
+      bottom: -1rpx;
+      background-color: $uni-primary;
+    }
+
+    .line {
+      font-size: $uni-font-size-small;
+      color: $uni-secondary-color;
+      margin-top: 30rpx;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .info-list {
+    border-top: 2rpx solid #f4f4f4;
+    padding: 20rpx 10rpx 0;
+    margin-top: 40rpx;
+  }
+
+  .info-list-item {
+    display: flex;
+    justify-content: space-between;
+    line-height: 1;
+    padding: 20rpx 0;
+    font-size: $uni-font-size-small;
+
+    .label {
+      color: $uni-secondary-color;
+    }
+
+    .value {
+      color: $uni-main-color;
+    }
+  }
+}
+
+.driver-info {
+  padding: 10rpx 30rpx 20rpx !important;
+
+  .info-list {
+    padding: 0 10rpx;
+    margin-top: 0;
+    border-top: none;
+  }
+
+  .info-list-item {
+    display: flex;
+    justify-content: space-between;
+    line-height: 1;
+    padding: 20rpx 0;
+    font-size: $uni-font-size-small;
+
+    .label {
+      color: $uni-secondary-color;
+    }
+
+    .value {
+      color: $uni-main-color;
+    }
+  }
+}
+
+.transit-info {
+  display: flex;
+  padding: 20rpx 30rpx !important;
+
+  .transit-line {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding: 0 40rpx;
+    margin-bottom: 10rpx;
+    font-size: $uni-font-size-small;
+    color: $uni-main-color;
+    background-image: url(https://sl-driver.oss-cn-hangzhou.aliyuncs.com/images/transit-arrow.png);
+    background-size: 74rpx 34rpx;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    .lead {
+      display: block;
+      font-size: $uni-font-size-base;
+      font-weight: 600;
+    }
+  }
+
+  .guide {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 50rpx;
+    font-size: 24rpx;
+    color: 24rpx;
+    border-left: 2rpx solid #f4f4f4;
+
+    .iconfont {
+      margin-bottom: 10rpx;
+      font-size: 40rpx;
+    }
+  }
+}
+
+.except-info {
+  padding: 0 30rpx 20rpx !important;
+
+  .info-list {
+    margin-top: 0;
+    border-top: 2rpx solid #f4f4f4;
+    padding: 16rpx 10rpx;
+
+    &:first-child {
+      border-top: none;
+    }
+  }
+
+  .info-list-item {
+    display: flex;
+    line-height: 1;
+    padding: 20rpx 0;
+    font-size: $uni-font-size-small;
+
+    .label {
+      color: $uni-main-color;
+    }
+
+    .value {
+      margin-left: 30rpx;
+      color: $uni-secondary-color;
+    }
+  }
+}
+
+.order-info {
+  padding: 20rpx 30rpx !important;
+
+  .search-bar {
+    position: relative;
+
+    .icon-search {
+      position: absolute;
+      top: 15rpx;
+      left: 20rpx;
+      color: $uni-secondary-color;
+      font-size: $uni-font-size-base;
+    }
+
+    .input {
+      height: 64rpx;
+      background-color: #f4f4f4;
+      border-radius: 64rpx;
+      padding-left: 64rpx;
+      font-size: $uni-font-size-small;
+    }
+  }
+
+  .transit-order {
+    padding: 30rpx 10rpx 10rpx;
+    line-height: 2.4;
+    font-size: $uni-font-size-small;
+    color: $uni-main-color;
+  }
+}
+
+.receipt-info {
+  min-height: 600rpx;
+  padding: 10rpx 30rpx 10rpx !important;
+
+  ::v-deep .uni-file-picker {
+    margin-bottom: 30rpx;
   }
 }
 
