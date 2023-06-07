@@ -69,10 +69,10 @@
       }
     ]
   },
-  "middleware": ["auth"],
   "pages": [
     {
       "path": "pages/task/index",
+      "middleware": ["auth"],
       "style": {
         "navigationBarTitleText": "",
         "navigationStyle": "custom"
@@ -86,6 +86,7 @@
     },
     {
       "path": "pages/my/index",
+      "middleware": ["auth"],
       "style": {
         "navigationStyle": "custom",
         "navigationBarTextStyle": "white"
@@ -93,6 +94,7 @@
     },
     {
       "path": "pages/message/index",
+      "middleware": ["auth"],
       "style": {
         "navigationBarTitleText": "消息"
       }
