@@ -79,10 +79,10 @@
   // 提交登录表单
   async function onSubmit() {
     // 调用登录接口
-    const { code, data } = await userApi.login(user.account, user.password)
+    const { code, data: token } = await userApi.login(user.account, user.password)
     if (code !== 200) return uni.$utils.toast()
     // 记录登录状态信息
-    userStore.token = 'Bearer ' + data
+    userStore.token = token
     // 跳回原来的页面
     uni[routeType.value]({ url: redirectURL.value })
   }

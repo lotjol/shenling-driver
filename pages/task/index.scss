@@ -173,25 +173,26 @@
 
     .icon-search {
       position: absolute;
-      top: 20rpx;
+      top: 22rpx;
       left: 24rpx;
       color: $uni-secondary-color;
-      font-size: $uni-font-size-base;
+      font-size: $uni-font-size-small;
     }
 
     .input {
       height: 72rpx;
+      line-height: 72rpx;
       background-color: #f4f4f4;
       border-radius: 72rpx;
       padding-left: 72rpx;
-      font-size: $uni-font-size-base;
+      font-size: $uni-font-size-small;
     }
   }
 
   .filter-bar {
     display: flex;
     margin-top: 30rpx;
-    font-size: $uni-font-size-base;
+    font-size: $uni-font-size-small;
     text-align: center;
     line-height: 64rpx;
     color: $uni-secondary-color;
@@ -214,7 +215,7 @@
       margin-left: 40rpx;
       line-height: 64rpx;
       border-radius: 64rpx;
-      font-size: $uni-font-size-base;
+      font-size: $uni-font-size-small;
       color: #fff;
       background-color: $uni-primary;
 
