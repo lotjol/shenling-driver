@@ -28,8 +28,19 @@
 
   /*每个页面公共css */
   .page-container {
+    height: 100vh;
+    overflow-y: auto;
     box-sizing: border-box;
     background-color: $uni-bg-color;
+  }
+
+  .uni-scroll-view-content {
+    height: auto !important;
+  }
+
+  .uni-scroll-view-refresher {
+    margin-top: 15rpx;
+    transform: scale(0.9);
   }
 
   .uni-nav-bar-text {
