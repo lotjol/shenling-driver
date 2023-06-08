@@ -4,32 +4,17 @@
   const tabIndex = ref(0)
 
   // 切换 Tab 标签页
-  const changeTab = (index) => {
+  const onTabChange = (index) => {
     tabIndex.value = index
-  }
-
-  // 跳转页面
-  const goDetail = (...args) => {
-    const { status, backRecord } = args
-    // 回车登记
-    if (backRecord) {
-      return uni.navigateTo({
-        url: '/subpkg_task/record/index',
-      })
-    }
-    // 任务详情
-    uni.navigateTo({
-      url: '/subpkg_task/detail/index?status=' + status,
-    })
   }
 </script>
 
 <template>
   <view class="page-container">
     <view class="task-tabbar">
-      <text @click="changeTab(0)" :class="{ active: tabIndex === 0 }" class="tab">待提货</text>
-      <text @click="changeTab(1)" :class="{ active: tabIndex === 1 }" class="tab">在途</text>
-      <text @click="changeTab(2)" :class="{ active: tabIndex === 2 }" class="tab">已完成</text>
+      <text @click="onTabChange(0)" :class="{ active: tabIndex === 0 }" class="tab">待提货</text>
+      <text @click="onTabChange(1)" :class="{ active: tabIndex === 1 }" class="tab">在途</text>
+      <text @click="onTabChange(2)" :class="{ active: tabIndex === 2 }" class="tab">已完成</text>
     </view>
     <scroll-view
       refresher-background="#f4f4f4"
@@ -38,31 +23,37 @@
       class="task-list"
       v-show="tabIndex === 0"
     >
-      <view class="task-card" @click="goDetail('待提货')">
-        <view class="header">
-          <text class="no">任务编号: XAHH1234567</text>
-          <text class="status">已延迟</text>
-        </view>
-        <view class="body">
-          <view class="timeline">
-            <view class="line">北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view>
-            <view class="line">河南省郑州市路北区北清路99号</view>
+      <view class="task-card">
+        <navigator url="/subpkg_task/detail/index?id=001">
+          <view class="header">
+            <text class="no">任务编号: XAHH1234567</text>
+            <text class="status">已延迟</text>
           </view>
-        </view>
+          <view class="body">
+            <view class="timeline">
+              <view class="line">北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view>
+              <view class="line">河南省郑州市路北区北清路99号</view>
+            </view>
+          </view>
+        </navigator>
         <view class="footer">
           <view class="label">提货时间</view>
           <view class="time">2022.05.04 13:00</view>
           <button class="action">提货</button>
         </view>
       </view>
-      <view class="task-card" @click="goDetail('待提货')">
-        <view class="header"><text class="no">任务编号: XAHH1234567</text></view>
-        <view class="body">
-          <view class="timeline">
-            <view class="line">北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view>
-            <view class="line">河南省郑州市路北区北清路99号</view>
+      <view class="task-card">
+        <navigator url="/subpkg_task/detail/index?id=001">
+          <view class="header">
+            <text class="no">任务编号: XAHH1234567</text>
           </view>
-        </view>
+          <view class="body">
+            <view class="timeline">
+              <view class="line">北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view>
+              <view class="line">河南省郑州市路北区北清路99号</view>
+            </view>
+          </view>
+        </navigator>
         <view class="footer">
           <view class="label">提货时间</view>
           <view class="time">2022.05.04 13:00</view>
@@ -78,28 +69,36 @@
       class="task-list"
       v-show="tabIndex === 1"
     >
-      <view class="task-card" @click="goDetail('在途')">
-        <view class="header"><text class="no">任务编号: XAHH1234567</text></view>
-        <view class="body">
-          <view class="timeline">
-            <view class="line">北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view>
-            <view class="line">河南省郑州市路北区北清路99号</view>
+      <view class="task-card">
+        <navigator url="/subpkg_task/detail/index?id=001">
+          <view class="header">
+            <text class="no">任务编号: XAHH1234567</text>
           </view>
-        </view>
+          <view class="body">
+            <view class="timeline">
+              <view class="line">北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view>
+              <view class="line">河南省郑州市路北区北清路99号</view>
+            </view>
+          </view>
+        </navigator>
         <view class="footer">
           <view class="label">提货时间</view>
           <view class="time">2022.05.04 13:00</view>
           <button class="action">交付</button>
         </view>
       </view>
-      <view class="task-card" @click="goDetail('在途', '回车登记')">
-        <view class="header"><text class="no">任务编号: XAHH1234567</text></view>
-        <view class="body">
-          <view class="timeline">
-            <view class="line">北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view>
-            <view class="line">河南省郑州市路北区北清路99号</view>
+      <view class="task-card">
+        <navigator url="/subpkg_task/detail/index?id=001">
+          <view class="header">
+            <text class="no">任务编号: XAHH1234567</text>
           </view>
-        </view>
+          <view class="body">
+            <view class="timeline">
+              <view class="line">北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view>
+              <view class="line">河南省郑州市路北区北清路99号</view>
+            </view>
+          </view>
+        </navigator>
         <view class="footer">
           <view class="label">提货时间</view>
           <view class="time">2022.05.04 13:00</view>
@@ -127,14 +126,18 @@
       class="task-list"
       v-show="tabIndex === 2"
     >
-      <view v-if="false" class="task-card" @click="goDetail('已完成')">
-        <view class="header"><text class="no">任务编号: XAHH1234567</text></view>
-        <view class="body">
-          <view class="timeline">
-            <view class="line">北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view>
-            <view class="line">河南省郑州市路北区北清路99号</view>
+      <view v-if="false" class="task-card">
+        <navigator url="/subpkg_task/detail/index?id=001">
+          <view class="header">
+            <text class="no">任务编号: XAHH1234567</text>
           </view>
-        </view>
+          <view class="body">
+            <view class="timeline">
+              <view class="line">北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view>
+              <view class="line">河南省郑州市路北区北清路99号</view>
+            </view>
+          </view>
+        </navigator>
         <view class="footer flex">
           <view class="label">提货时间</view>
           <view class="time">2022.05.04 13:00</view>

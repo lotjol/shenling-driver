@@ -2,14 +2,12 @@
   import { ref } from 'vue'
   import { onLoad } from '@dcloudio/uni-app'
 
-  // 记录任务的状态
-  const status = ref('')
   // 弹层实例
   const popup = ref(null)
 
   // 获取地址参数
   onLoad((params) => {
-    status.value = params.status
+    console.log(params.id)
   })
 
   // 路由返回
