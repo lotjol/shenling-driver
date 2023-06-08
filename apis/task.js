@@ -14,4 +14,12 @@ export default {
   list(data) {
     return uniFetch.get('/driver/tasks/list', data)
   },
+
+  /**
+   * 任务详情
+   * @@param {string} id - 任务ID
+   */
+  detail(id = '1665989068002979841') {
+    return uniFetch.get(`/driver/tasks/details/${id}`)
+  },
 }
