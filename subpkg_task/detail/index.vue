@@ -1,12 +1,6 @@
 <script setup>
   import { ref } from 'vue'
   import { onLoad } from '@dcloudio/uni-app'
-  import slTaskBasic from './components/task-basic'
-  import slTaskDriver from './components/task-driver'
-  import slTaskTransit from './components/task-transit'
-  import slTaskException from './components/task-exception'
-  import slTaskOrder from './components/task-order'
-  import slTaskReceipt from './components/task-receipt'
 
   // 记录任务的状态
   const status = ref('')
@@ -21,20 +15,6 @@
   // 路由返回
   function goBack() {
     uni.navigateBack()
-  }
-
-  // 页面跳转
-  function goExcept() {
-    uni.navigateTo({
-      url: '/subpkg_task/except/index',
-    })
-  }
-
-  // 页面跳转
-  function goDelay() {
-    uni.navigateTo({
-      url: '/subpkg_task/delay/index',
-    })
   }
 
   // 取消任务
