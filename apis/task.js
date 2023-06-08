@@ -22,4 +22,15 @@ export default {
   detail(id = '1665989068002979841') {
     return uniFetch.get(`/driver/tasks/details/${id}`)
   },
+
+  /**
+   * 延迟提货
+   * @param {Object} data - 接口参数
+   * @property {string} data.id - 任务ID
+   * @property {string} data.delayTime - 延迟时间
+   * @property {string} data.delayReason - 延迟原因
+   */
+  delay(data) {
+    return uniFetch.put('/driver/tasks/delay', data)
+  },
 }

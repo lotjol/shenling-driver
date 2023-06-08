@@ -34,6 +34,10 @@
     background-color: $uni-bg-color;
   }
 
+  .error {
+    color: #ef4f3f !important;
+  }
+
   .uni-scroll-view-content {
     height: auto !important;
   }

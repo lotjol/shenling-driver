@@ -1,16 +1,38 @@
 <script setup>
   import { ref } from 'vue'
   import { onLoad } from '@dcloudio/uni-app'
+  import taskApi from '@/apis/task'
 
-  // 记录任务的状态
-  const status = ref('')
   // 弹层实例
   const popup = ref(null)
+  // 任务详情数据
+  const taskDetail = ref({})
 
   // 获取地址参数
   onLoad((params) => {
-    status.value = params.status
+    getTaskDetail(params.id)
   })
+
+  // 任务详情
+  async function getTaskDetail(id) {
+    id = undefined // 测试阶段
+    const { code, data } = await taskApi.detail(id)
+    if (code !== 200) return uni.$utils.toast()
+    taskDetail.value = data
+  }
+
+  // 延迟提货
+  function delayPickUp(id, planTime) {
+    planTime = planTime || '2023-06-10 13:10'
+    if (!id) return
+    uni.navigateTo({ url: `/subpkg_task/delay/index?id=${id}&planTime=${planTime}` })
+  }
+
+  // 提货
+  function pickUp(id) {
+    if (!id) return
+    uni.$utils.toast('变更任务状态...')
+  }
 
   // 路由返回
   function goBack() {
@@ -40,29 +62,29 @@
         <uni-collapse-item open :show-animation="false" :border="false" title-border="none" title="基本信息">
           <view class="content">
             <view class="timeline">
-              <view class="line">北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view>
-              <view class="line">河南省郑州市路北区北清路99号</view>
+              <view class="line">{{ taskDetail.startAddress }}</view>
+              <view class="line">{{ taskDetail.endAddress }}</view>
             </view>
             <view class="info-list">
               <view class="info-list-item">
                 <text class="label">任务编号</text>
-                <text class="value">1557211886558850</text>
+                <text class="value">{{ taskDetail.transportTaskId }}</text>
               </view>
               <view class="info-list-item">
                 <text class="label">联系人</text>
-                <text class="value">张三</text>
+                <text class="value">{{ taskDetail.finishHandover }}</text>
               </view>
               <view class="info-list-item">
                 <text class="label">联系电话</text>
-                <text class="value">13212345678</text>
+                <text class="value">{{ taskDetail.finishHandoverPhone }}</text>
               </view>
               <view class="info-list-item">
                 <text class="label">提货时间</text>
-                <text class="value">2022.05.04 13:00</text>
+                <text class="value">{{ 'xxxx' }}</text>
               </view>
               <view class="info-list-item">
                 <text class="label">预计送达时间</text>
-                <text class="value">2022.05.05 10:00</text>
+                <text class="value">{{ 'dddddd' }}</text>
               </view>
             </view>
           </view>
@@ -71,12 +93,12 @@
           <view class="content driver-info">
             <view class="info-list">
               <view class="info-list-item">
-                <text class="label">任务编号</text>
-                <text class="value">1557211886558850</text>
+                <text class="label">车牌号</text>
+                <text class="value">{{ taskDetail.licensePlate }}</text>
               </view>
               <view class="info-list-item">
-                <text class="label">联系人</text>
-                <text class="value">张三</text>
+                <text class="label">司机姓名</text>
+                <text class="value">{{ taskDetail.driverName }}</text>
               </view>
             </view>
           </view>
@@ -85,12 +107,12 @@
           <view class="content transit-info">
             <view class="transit-line">
               <view class="start">
-                <text class="lead">北京市</text>
-                <text class="normal">北京市</text>
+                <text class="lead">{{ taskDetail.startProvince }}</text>
+                <text class="normal">{{ taskDetail.startCity }}</text>
               </view>
               <view class="end">
-                <text class="lead">河南省</text>
-                <text class="normal">郑州市</text>
+                <text class="lead">{{ taskDetail.endProvince }}</text>
+                <text class="normal">{{ taskDetail.endCity }}</text>
               </view>
             </view>
             <navigator hover-class="none" url="/subpkg_task/guide/index" class="guide">
@@ -99,7 +121,13 @@
             </navigator>
           </view>
         </uni-collapse-item>
-        <uni-collapse-item :border="false" :show-animation="false" title-border="none" title="异常信息">
+        <uni-collapse-item
+          v-if="false"
+          :border="false"
+          :show-animation="false"
+          title-border="none"
+          title="异常信息"
+        >
           <view class="content except-info">
             <view class="info-list">
               <view class="info-list-item">
@@ -161,13 +189,7 @@
             </view>
           </view>
         </uni-collapse-item>
-        <uni-collapse-item
-          :border1="false"
-          :border="false"
-          :show-animation="false"
-          title-border="none"
-          title="提货信息"
-        >
+        <uni-collapse-item :border="false" :show-animation="false" title-border="none" title="提货信息">
           <view class="content receipt-info">
             <uni-file-picker limit="3" title="请拍照上传回单凭证"></uni-file-picker>
             <uni-file-picker limit="3" title="请拍照上传货品照片"></uni-file-picker>
@@ -176,11 +198,13 @@
       </uni-collapse>
     </view>
     <view class="toolbar">
-      <template v-if="true">
-        <button class="button delay">延迟提货</button>
-        <button class="button primary">提货</button>
+      <template v-if="taskDetail.status === 1">
+        <button @click="delayPickUp(taskDetail.id, taskDetail.planDepartureTime)" class="button delay">
+          延迟提货
+        </button>
+        <button @click="pickUp(taskDetail.id)" class="button primary">提货</button>
       </template>
-      <template v-if="false">
+      <template v-if="taskDetail.status === 2">
         <button class="button delay">异常上报</button>
         <button class="button primary">支付</button>
       </template>
