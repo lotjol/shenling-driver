@@ -1,9 +1,9 @@
 <script setup>
   import { ref, computed } from 'vue'
-  import { onLoad } from '@dcloudio/uni-app'
+  import { onShow } from '@dcloudio/uni-app'
   import taskApi from '@/apis/task'
 
-  onLoad(getTaskList)
+  onShow(getTaskList)
 
   // 标签页索引
   const tabIndex = ref(0)

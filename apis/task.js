@@ -1,4 +1,5 @@
 import uniFetch from './uni-fetch'
+import { useUserStore } from '@/stores/user'
 
 export default {
   /**
@@ -32,5 +33,45 @@ export default {
    */
   delay(data) {
     return uniFetch.put('/driver/tasks/delay', data)
+  },
+
+  /**
+   * 上传文件
+   * @param {string}  filePath - 待上传文件路径
+   * @param {string}  type - 上传文件类型
+   */
+  upload(filePath, type = 'image') {
+    const urlMap = { image: '/driver/files/imageUpload' }
+    const userStore = useUserStore()
+
+    return new Promise((resolve, reject) => {
+      uni.showLoading({ title: '正在上传...', mask: true })
+      uni.uploadFile({
+        url: uniFetch.baseURL + urlMap[type],
+        filePath,
+        name: 'file',
+        header: {
+          Authorization: userStore.token,
+        },
+        success({ statusCode, data }) {
+          if (statusCode !== 200) return resolve({ code: statusCode, msg: '上传失败!' })
+          resolve(JSON.parse(data))
+        },
+        fail: reject,
+        complete: () => uni.hideLoading(),
+      })
+    })
+  },
+
+  /**
+   * 提货
+   * @param {Object} data - 接口参数
+   * @property {string} data.id - 任务ID
+   * @property {string} data.cargoPickUpPicture - 凭证图片
+   * @property {string} data.cargoPicture - 货物图片
+   */
+  pickup(data) {
+    if (!data.id) return
+    return uniFetch.post('/driver/tasks/takeDelivery', data)
   },
 }

@@ -15,23 +15,47 @@
 
   // 任务详情
   async function getTaskDetail(id) {
-    id = undefined // 测试阶段
+    /**************/
+    id = undefined
+    /**************/
     const { code, data } = await taskApi.detail(id)
     if (code !== 200) return uni.$utils.toast()
+    /*********************/
+    data.cargoPickUpPicture = data.cargoPickUpPicture.map((item) => {
+      return { url: item }
+    })
+    data.cargoPicture = data.cargoPicture.map((item) => {
+      return { url: item }
+    })
+    /********************/
     taskDetail.value = data
   }
 
   // 延迟提货
   function delayPickUp(id, planTime) {
+    /**********/
     planTime = planTime || '2023-06-10 13:10'
+    /**********/
+
     if (!id) return
-    uni.navigateTo({ url: `/subpkg_task/delay/index?id=${id}&planTime=${planTime}` })
+    uni.navigateTo({
+      url: `/subpkg_task/delay/index?id=${id}&planTime=${planTime}`,
+    })
   }
 
   // 提货
   function pickUp(id) {
     if (!id) return
-    uni.$utils.toast('变更任务状态...')
+    let { cargoPickUpPicture, cargoPicture } = taskDetail.value
+    if (cargoPickUpPicture.length === 0) return uni.$utils.toast('请上传回单凭证!')
+    if (cargoPicture.length === 0) return uni.$utils.toast('请上传货品照片!')
+
+    /***************************/
+    // 使用 , 拼接图片路径
+    cargoPickUpPicture = cargoPickUpPicture.map((item) => item.url).join(',')
+    cargoPicture = cargoPicture.map((item) => item.url).join(',')
+    /***************************/
+    taskApi.pickup({ id, cargoPickUpPicture, cargoPicture })
   }
 
   // 路由返回
@@ -80,11 +104,11 @@
               </view>
               <view class="info-list-item">
                 <text class="label">提货时间</text>
-                <text class="value">{{ 'xxxx' }}</text>
+                <text class="value">{{ taskDetail.planDepartureTime }}</text>
               </view>
               <view class="info-list-item">
                 <text class="label">预计送达时间</text>
-                <text class="value">{{ 'dddddd' }}</text>
+                <text class="value">{{ taskDetail.planArrivalTime }}</text>
               </view>
             </view>
           </view>
@@ -121,13 +145,7 @@
             </navigator>
           </view>
         </uni-collapse-item>
-        <uni-collapse-item
-          v-if="false"
-          :border="false"
-          :show-animation="false"
-          title-border="none"
-          title="异常信息"
-        >
+        <uni-collapse-item :border="false" :show-animation="false" title-border="none" title="异常信息">
           <view class="content except-info">
             <view class="info-list">
               <view class="info-list-item">
@@ -191,8 +209,20 @@
         </uni-collapse-item>
         <uni-collapse-item :border="false" :show-animation="false" title-border="none" title="提货信息">
           <view class="content receipt-info">
-            <uni-file-picker limit="3" title="请拍照上传回单凭证"></uni-file-picker>
-            <uni-file-picker limit="3" title="请拍照上传货品照片"></uni-file-picker>
+            <uni-file-picker
+              v-model="taskDetail.cargoPickUpPicture"
+              file-mediatype="image"
+              file-extname="png,jpg,gif"
+              limit="3"
+              title="请拍照上传回单凭证"
+            ></uni-file-picker>
+            <uni-file-picker
+              v-model="taskDetail.cargoPicture"
+              file-mediatype="image"
+              file-extname="png,jpg,gif"
+              limit="3"
+              title="请拍照上传货品照片"
+            ></uni-file-picker>
           </view>
         </uni-collapse-item>
       </uni-collapse>

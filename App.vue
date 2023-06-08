@@ -35,7 +35,7 @@
   }
 
   .error {
-    color: #ef4f3f !important;
+    color: $uni-primary !important;
   }
 
   .uni-scroll-view-content {

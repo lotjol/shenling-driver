@@ -46,7 +46,7 @@
     color: #fff;
     font-size: $uni-font-size-base;
     border-radius: 100rpx;
-    background-color: #ef4f3f;
+    background-color: $uni-primary;
 
     &[disabled] {
       background-color: #fadcd9;

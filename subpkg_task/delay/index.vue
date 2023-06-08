@@ -10,6 +10,7 @@
   const planTime = ref('')
   const delayTime = ref('')
   const delayReason = ref('')
+  
   // 统计输入的字数
   const wordsCount = computed(() => delayReason.value.length)
   // 按钮状态
