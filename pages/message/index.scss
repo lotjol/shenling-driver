@@ -1,7 +1,9 @@
 .page-container {
+  display: flex;
+  flex-direction: column;
   height: 100vh;
   /* #ifdef H5 */
-  height: calc(100vh - 44px);
+  height: calc(100vh - 94px);
   /* #endif */
 }
 
@@ -13,6 +15,7 @@
   font-size: $uni-font-size-base;
   background-color: #fff;
   color: $uni-secondary-color;
+  border-bottom: 1rpx solid #eee;
 
   .active {
     color: $uni-main-color;
@@ -46,6 +49,9 @@
 }
 
 .message-list {
+  flex: 1;
+  overflow: hidden;
+
   .dot {
     display: block;
     width: 16rpx;
@@ -56,6 +62,13 @@
     margin-right: 10rpx;
     position: absolute;
     left: 24rpx;
+  }
+
+  ::v-deep .uni-list {
+    margin: 0 30rpx;
+    border-radius: 16rpx;
+    margin-bottom: 30rpx;
+    overflow: hidden;
   }
 
   ::v-deep .uni-list-item__content-title {
@@ -101,7 +114,7 @@
 
   .brief {
     margin-top: 20rpx;
-    font-size: 30rpx;
+    font-size: $uni-font-size-small;
     color: $uni-secondary-color;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -129,4 +142,19 @@
     border: 2rpx solid $uni-primary;
     border-radius: 60rpx;
   }
+}
+
+.message-blank {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  width: 201rpx;
+  text-align: center;
+  padding-top: 130rpx;
+  background-image: url(https://sl-driver.oss-cn-hangzhou.aliyuncs.com/images/blank%402x.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  font-size: 24rpx;
+  color: $uni-secondary-color;
+  transform: translate(-50%, -100%);
 }
