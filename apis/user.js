@@ -27,8 +27,11 @@ export default {
 
   /**
    * 任务数据
+   * @param {string} year - 任务数据的年份
+   * @param {string} month - 任务数据的月份
    */
-  task() {
-    return uniFetch.get('/driver/users/taskReport')
+  task(year, month) {
+    if (!year || !month) return
+    return uniFetch.get('/driver/users/taskReport', { year, month })
   },
 }

@@ -1,45 +1,36 @@
 <script setup>
-  import { reactive, ref } from 'vue'
+  import { ref } from 'vue'
   import { onLoad } from '@dcloudio/uni-app'
-  import userApi from '@/apis/user'
+  import slUniCalendar from './components/sl-uni-calendar/sl-uni-calendar'
   import dayjs from 'dayjs'
+  import userApi from '@/apis/user'
 
-  const year = ref(dayjs().get('year'))
-  const month = ref(dayjs().get('month'))
+  // 任务数据
   const taskData = ref({})
-  const selected = reactive([
-    { date: '2023-06-03', info: '32' },
-    { date: '2023-06-06', info: '128' },
-    { date: '2023-06-09', info: '128' },
-    { date: '2023-06-14', info: '342' },
-    { date: '2023-06-18', info: '249' },
-    { date: '2023-06-22', info: '317' },
-    { date: '2023-06-24', info: '362' },
-    { date: '2023-06-27', info: '213' },
-    { date: '2023-06-26', info: '112' },
-  ])
 
-  // 生命周期（页面加载完成）
+  // 页面加载完毕
   onLoad(() => {
-    // 获取任务数据
-    getTaskData()
+    const year = dayjs().get('year')
+    const month = dayjs().get('month')
+    getTaskData(year, month)
   })
 
-  // 任务数据接口
-  async function getTaskData() {
-    const { code, data } = await userApi.task(year.value, month.value)
-    if (code !== 200) return uni.$utils.toast()
-    taskData.value = data
+  // 切换日期
+  function onCalendarChange({ year, month }) {
+    getTaskData(year, month)
   }
 
-  function oncalendarChange({ year, month }) {
-    getTaskData(year, month)
+  // 任务数据接口
+  async function getTaskData(year, month) {
+    const { code, data } = await userApi.task(year, month)
+    if (code !== 200) return uni.$utils.toast()
+    taskData.value = data
   }
 </script>
 
 <template>
   <view class="page-container">
-    <sl-uni-calendar @change="oncalendarChange" :selected="selected" :show-month="false">
+    <sl-uni-calendar @change="onCalendarChange" :show-month="false">
       <view class="data-overview">
         <view class="item">
           <text class="volumn">{{ taskData.taskAmounts }}</text>
