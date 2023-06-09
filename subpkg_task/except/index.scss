@@ -4,6 +4,7 @@
   /* #ifdef H5 */
   height: calc(100vh - 44px);
   /* #endif */
+  border-top: 1rpx solid #eee;
   padding-bottom: env(safe-area-inset-bottom);
 
   ::v-deep .uni-list {
@@ -54,6 +55,7 @@
 
   .fixbar {
     padding: 20rpx 0;
+    border-top: 1rpx solid #eee;
     background-color: #fff;
   }
 
