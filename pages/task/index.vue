@@ -99,7 +99,6 @@
       >
     </view>
     <scroll-view
-      refresher-background="#f4f4f4"
       scroll-y
       refresher-enabled
       class="task-list"
@@ -127,7 +126,6 @@
       <view v-if="tabsData[0].empty" class="task-blank">无待提货物</view>
     </scroll-view>
     <scroll-view
-      refresher-background="#f4f4f4"
       scroll-y
       refresher-enabled
       class="task-list"
@@ -171,7 +169,6 @@
       </view>
     </view>
     <scroll-view
-      refresher-background="#f4f4f4"
       scroll-y
       refresher-enabled
       class="task-list"
