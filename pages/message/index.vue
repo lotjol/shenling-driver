@@ -15,7 +15,7 @@
       <text @click="onTabChange(0)" :class="{ active: tabIndex === 0 }" class="tab">任务通知</text>
       <text @click="onTabChange(1)" :class="{ active: tabIndex === 1 }" class="tab">公告</text>
     </view>
-    <scroll-view scroll-y class="message-list" v-show="tabIndex === 0">
+    <scroll-view refresher-enabled scroll-y class="message-list" v-show="tabIndex === 0">
       <view class="message-action">
         <text class="iconfont icon-clear"></text>
         全部已读
@@ -62,7 +62,7 @@
       </uni-card>
       <view v-if="false" class="message-blank">暂无消息</view>
     </scroll-view>
-    <scroll-view scroll-y class="message-list" v-show="tabIndex === 1">
+    <scroll-view refresher-enabled scroll-y class="message-list" v-show="tabIndex === 1">
       <view class="message-action">
         <text class="iconfont icon-clear"></text>
         全部已读

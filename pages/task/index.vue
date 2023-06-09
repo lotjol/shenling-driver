@@ -16,13 +16,7 @@
       <text @click="onTabChange(1)" :class="{ active: tabIndex === 1 }" class="tab">在途</text>
       <text @click="onTabChange(2)" :class="{ active: tabIndex === 2 }" class="tab">已完成</text>
     </view>
-    <scroll-view
-      refresher-background="#f4f4f4"
-      scroll-y
-      refresher-enabled
-      class="task-list"
-      v-show="tabIndex === 0"
-    >
+    <scroll-view scroll-y refresher-enabled class="task-list" v-show="tabIndex === 0">
       <view class="task-card">
         <navigator url="/subpkg_task/detail/index?id=001">
           <view class="header">
@@ -62,13 +56,7 @@
       </view>
       <view v-if="false" class="task-blank">无待提货物</view>
     </scroll-view>
-    <scroll-view
-      refresher-background="#f4f4f4"
-      scroll-y
-      refresher-enabled
-      class="task-list"
-      v-show="tabIndex === 1"
-    >
+    <scroll-view scroll-y refresher-enabled class="task-list" v-show="tabIndex === 1">
       <view class="task-card">
         <navigator url="/subpkg_task/detail/index?id=001">
           <view class="header">
@@ -119,13 +107,7 @@
         <button disabled class="button">筛选</button>
       </view>
     </view>
-    <scroll-view
-      refresher-background="#f4f4f4"
-      scroll-y
-      refresher-enabled
-      class="task-list"
-      v-show="tabIndex === 2"
-    >
+    <scroll-view scroll-y refresher-enabled class="task-list" v-show="tabIndex === 2">
       <view v-if="false" class="task-card">
         <navigator url="/subpkg_task/detail/index?id=001">
           <view class="header">

@@ -45,6 +45,7 @@
   .uni-scroll-view-refresher {
     margin-top: 15rpx;
     transform: scale(0.9);
+    background-color: transparent !important;
   }
 
   .uni-nav-bar-text {
