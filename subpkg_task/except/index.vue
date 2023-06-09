@@ -1,7 +1,5 @@
 <script setup>
-  import { ref, reactive, computed } from 'vue'
-  // 图片预览
-  const imageValue = reactive([{ name: 'file.txt', extname: 'txt' }])
+  import { ref, computed } from 'vue'
   // 组件 ref
   const popup = ref(null)
   // 文件提示
@@ -12,49 +10,51 @@
   const timePicker = ref('')
 
   // 打开地图
-  function chooseLocation() {
+  function onLocationChoose() {
     uni.chooseLocation({})
   }
 
   // 打开弹层
-  function openPopup() {
+  function onPopupOpen() {
     popup.value.open()
   }
 
   // 关闭弹层
-  function closePopup() {
+  function onPopupClose() {
     popup.value.close()
   }
 </script>
 
 <template>
   <view class="page-container">
-    <uni-list :border="false">
-      <uni-list-item show-arrow title="异常时间">
-        <template v-slot:footer>
-          <uni-datetime-picker v-model="timePicker">
-            <view class="picker-value">{{ exceptTime }}</view>
-          </uni-datetime-picker>
-        </template>
-      </uni-list-item>
-      <uni-list-item show-arrow clickable @click="chooseLocation" title="上报位置" rightText="请选择" />
-      <uni-list-item show-arrow clickable @click="openPopup" title="异常类型" rightText="请选择" />
-      <uni-list-item direction="column" title="异常描述">
-        <template v-slot:footer>
-          <view class="textarea-wrapper">
-            <textarea class="textarea" placeholder="请输入异常描述"></textarea>
-            <view class="words-count">0/50</view>
-          </view>
-        </template>
-      </uni-list-item>
-    </uni-list>
-    <uni-list class="upload-picture">
-      <uni-list-item direction="column" title="上传图片（最多6张）">
-        <template v-slot:footer>
-          <uni-file-picker v-model="imageValue" limit="6"></uni-file-picker>
-        </template>
-      </uni-list-item>
-    </uni-list>
+    <scroll-view class="scroll-view" scroll-y>
+      <uni-list :border="false">
+        <uni-list-item show-arrow title="异常时间">
+          <template v-slot:footer>
+            <uni-datetime-picker v-model="timePicker">
+              <view class="picker-value">{{ exceptTime }}</view>
+            </uni-datetime-picker>
+          </template>
+        </uni-list-item>
+        <uni-list-item show-arrow clickable @click="onLocationChoose" title="上报位置" rightText="请选择" />
+        <uni-list-item show-arrow clickable @click="onPopupOpen" title="异常类型" rightText="请选择" />
+        <uni-list-item direction="column" title="异常描述">
+          <template v-slot:footer>
+            <view class="textarea-wrapper">
+              <textarea class="textarea" placeholder="请输入异常描述"></textarea>
+              <view class="words-count">0/50</view>
+            </view>
+          </template>
+        </uni-list-item>
+      </uni-list>
+      <uni-list class="upload-picture">
+        <uni-list-item direction="column" title="上传图片（最多6张）">
+          <template v-slot:footer>
+            <uni-file-picker limit="6"></uni-file-picker>
+          </template>
+        </uni-list-item>
+      </uni-list>
+    </scroll-view>
     <view class="fixbar">
       <button class="button disable">提交</button>
     </view>
@@ -65,32 +65,42 @@
             <view style="margin-top: 4rpx; font-size: 32rpx; font-weight: 700">选择类型</view>
           </template>
           <template v-slot:footer>
-            <uni-icons @click="closePopup" type="closeempty" size="20"></uni-icons>
+            <uni-icons @click="onPopupClose" type="closeempty" size="20"></uni-icons>
           </template>
         </uni-list-item>
         <uni-list-item title="发动机启动困难">
           <template v-slot:footer>
-            <text class="checkbox"></text>
+            <checkbox-group class="checkbox">
+              <checkbox color="#EF4F3F" />
+            </checkbox-group>
           </template>
         </uni-list-item>
         <uni-list-item title="不着车，漏油">
           <template v-slot:footer>
-            <text class="checkbox"></text>
+            <checkbox-group class="checkbox">
+              <checkbox color="#EF4F3F" />
+            </checkbox-group>
           </template>
         </uni-list-item>
         <uni-list-item title="照明失灵">
           <template v-slot:footer>
-            <text class="checkbox"></text>
+            <checkbox-group class="checkbox">
+              <checkbox color="#EF4F3F" />
+            </checkbox-group>
           </template>
         </uni-list-item>
         <uni-list-item title="排烟异常、温度异常">
           <template v-slot:footer>
-            <text class="checkbox"></text>
+            <checkbox-group class="checkbox">
+              <checkbox color="#EF4F3F" />
+            </checkbox-group>
           </template>
         </uni-list-item>
         <uni-list-item title="其他问题">
           <template v-slot:footer>
-            <text class="checkbox"></text>
+            <checkbox-group class="checkbox">
+              <checkbox color="#EF4F3F" />
+            </checkbox-group>
           </template>
         </uni-list-item>
         <uni-list-item>
