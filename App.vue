@@ -75,4 +75,8 @@
     font-size: $uni-font-size-base !important;
     color: $uni-secondary-color !important;
   }
+
+  .uni-checkbox-input:hover {
+    border-color: #d1d1d1 !important;
+  }
 </style>

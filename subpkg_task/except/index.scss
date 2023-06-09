@@ -1,9 +1,19 @@
 .page-container {
-  padding: 30rpx 30rpx env(safe-area-inset-bottom);
+  display: flex;
+  flex-direction: column;
+  /* #ifdef H5 */
+  height: calc(100vh - 44px);
+  /* #endif */
+  padding-bottom: env(safe-area-inset-bottom);
 
   ::v-deep .uni-list {
-    margin-bottom: 30rpx;
+    margin: 30rpx;
     border-radius: 16rpx;
+    overflow: hidden;
+  }
+
+  .scroll-view {
+    flex: 1;
     overflow: hidden;
   }
 
@@ -43,10 +53,7 @@
   }
 
   .fixbar {
-    position: sticky;
-    bottom: 0;
     padding: 20rpx 0;
-    margin: 0 -30rpx 0 -30rpx;
     background-color: #fff;
   }
 
@@ -72,7 +79,7 @@
       width: 46rpx;
       height: 46rpx;
       display: block;
-      background-color: #f4f4f4;
+      transform: scale(0.9);
     }
   }
 }
