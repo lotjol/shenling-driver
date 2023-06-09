@@ -2,6 +2,10 @@
   import { ref, computed } from 'vue'
   // 组件 ref
   const popup = ref(null)
+
+  // 异常上报数据
+  const exceptData = ref({})
+
   // 文件提示
   const exceptTime = computed(() => {
     return timePicker.value || '请选择'

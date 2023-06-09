@@ -82,7 +82,6 @@
     if (code !== 200) return uni.$utils.toast()
     const renderData = tabsData.value[tabIndex.value]
     renderData.items = data.items || []
-    console.log(renderData.items.length === 0)
     renderData.empty = renderData.items.length === 0
   }
 </script>
@@ -98,14 +97,9 @@
         >{{ tab.text }}</text
       >
     </view>
-    <scroll-view
-      scroll-y
-      refresher-enabled
-      class="task-list"
-      v-show="tabIndex === 0"
-    >
+    <scroll-view scroll-y refresher-enabled class="task-list" v-show="tabIndex === 0">
       <view v-for="item in tabsData[0].items" :key="item.id" class="task-card">
-        <navigator :url="`/subpkg_task/detail/index?id=${item.id}`">
+        <navigator hover-class="none" :url="`/subpkg_task/detail/index?id=${item.id}`">
           <view class="header">
             <text class="no">任务编号: {{ item.transportTaskId }}</text>
             <text v-if="item.actualArrivalTime > item.planArrivalTime" class="status">已延迟</text>
@@ -125,14 +119,9 @@
       </view>
       <view v-if="tabsData[0].empty" class="task-blank">无待提货物</view>
     </scroll-view>
-    <scroll-view
-      scroll-y
-      refresher-enabled
-      class="task-list"
-      v-show="tabIndex === 1"
-    >
+    <scroll-view scroll-y refresher-enabled class="task-list" v-show="tabIndex === 1">
       <view v-for="item in tabsData[1].items" :key="item.id" class="task-card">
-        <navigator :url="`/subpkg_task/detail/index?id=${item.id}`">
+        <navigator hover-class="none" :url="`/subpkg_task/detail/index?id=${item.id}`">
           <view class="header">
             <text class="no">任务编号: {{ item.transportTaskId }}</text>
           </view>
@@ -168,14 +157,9 @@
         <button :disabled="!enableFilter" class="button">筛选</button>
       </view>
     </view>
-    <scroll-view
-      scroll-y
-      refresher-enabled
-      class="task-list"
-      v-show="tabIndex === 2"
-    >
+    <scroll-view scroll-y refresher-enabled class="task-list" v-show="tabIndex === 2">
       <view v-for="item in tabsData[2].items" :key="item.id" class="task-card">
-        <navigator :url="`/subpkg_task/detail/index?id=${item.id}`">
+        <navigator hover-class="none" :url="`/subpkg_task/detail/index?id=${item.id}`">
           <view class="header">
             <text class="no">任务编号: {{ item.transportTaskId }}</text>
           </view>

@@ -58,6 +58,15 @@
     taskApi.pickup({ id, cargoPickUpPicture, cargoPicture })
   }
 
+  function exceptionReport(id) {
+    if (!id) return
+    uni.navigateTo({
+      url: `/subpkg_task/except/index?id=${id}`,
+    })
+  }
+
+  function deliver(id) {}
+
   // 路由返回
   function goBack() {
     uni.navigateBack()
@@ -235,8 +244,8 @@
         <button @click="pickUp(taskDetail.id)" class="button primary">提货</button>
       </template>
       <template v-if="taskDetail.status === 2">
-        <button class="button delay">异常上报</button>
-        <button class="button primary">支付</button>
+        <button @click="exceptionReport(taskDetail.id)" class="button delay">异常上报</button>
+        <button @click="deliver(taskDetail.id)" class="button primary">支付</button>
       </template>
     </view>
     <uni-popup ref="popup" type="bottom">
