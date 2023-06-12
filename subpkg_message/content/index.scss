@@ -1,4 +1,7 @@
 .page-container {
+  /* #ifdef H5 */
+  height: calc(100vh - 44px);
+  /* #endif */
   background-color: #fff;
   padding: 40rpx;
 

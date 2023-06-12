@@ -1,4 +1,7 @@
 .page-container {
+  /* #ifdef H5 */
+  height: calc(100vh - 44px);
+  /* #endif */
   padding: 30rpx 30rpx env(safe-area-inset-bottom);
 
   ::v-deep .uni-list {
