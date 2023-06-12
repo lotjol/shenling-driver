@@ -74,4 +74,16 @@ export default {
     if (!data.id) return
     return uniFetch.post('/driver/tasks/takeDelivery', data)
   },
+
+  /**
+   * 交付
+   * @param {Object} data - 接口参数
+   * @property {string} data.id - 任务ID
+   * @property {string} data.transportCertificate - 凭证图片
+   * @property {string} data.deliverPicture - 货物图片
+   */
+  delivery(data) {
+    if (!data.id) return
+    return uniFetch.post('/driver/tasks/deliver', data)
+  },
 }

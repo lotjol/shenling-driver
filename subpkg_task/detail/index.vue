@@ -28,6 +28,15 @@
       return { url: item }
     })
     /********************/
+
+    /*********************/
+    data.transportCertificate = data.transportCertificate.map((item) => {
+      return { url: item }
+    })
+    data.deliverPicture = data.deliverPicture.map((item) => {
+      return { url: item }
+    })
+    /********************/
     taskDetail.value = data
   }
 
@@ -65,7 +74,19 @@
     })
   }
 
-  function deliver(id) {}
+  function delivery(id) {
+    if (!id) return
+    let { transportCertificate, deliverPicture } = taskDetail.value
+    if (transportCertificate.length === 0) return uni.$utils.toast('请上传回单凭证!')
+    if (deliverPicture.length === 0) return uni.$utils.toast('请上传货品照片!')
+
+    /***************************/
+    // 使用 , 拼接图片路径
+    deliverPicture = deliverPicture.map((item) => item.url).join(',')
+    transportCertificate = transportCertificate.map((item) => item.url).join(',')
+    /***************************/
+    taskApi.delivery({ id, transportCertificate, deliverPicture })
+  }
 
   // 路由返回
   function goBack() {
@@ -234,6 +255,24 @@
             ></uni-file-picker>
           </view>
         </uni-collapse-item>
+        <uni-collapse-item :border="false" :show-animation="false" title-border="none" title="交货信息">
+          <view class="content delivery-info">
+            <uni-file-picker
+              v-model="taskDetail.transportCertificate"
+              file-mediatype="image"
+              file-extname="png,jpg,gif"
+              limit="3"
+              title="请拍照上传回单凭证"
+            ></uni-file-picker>
+            <uni-file-picker
+              v-model="taskDetail.deliverPicture"
+              file-mediatype="image"
+              file-extname="png,jpg,gif"
+              limit="3"
+              title="请拍照上传货品照片"
+            ></uni-file-picker>
+          </view>
+        </uni-collapse-item>
       </uni-collapse>
     </view>
     <view class="toolbar">
@@ -245,7 +284,7 @@
       </template>
       <template v-if="taskDetail.status === 2">
         <button @click="exceptionReport(taskDetail.id)" class="button delay">异常上报</button>
-        <button @click="deliver(taskDetail.id)" class="button primary">支付</button>
+        <button @click="delivery(taskDetail.id)" class="button primary">交付</button>
       </template>
     </view>
     <uni-popup ref="popup" type="bottom">

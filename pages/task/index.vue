@@ -84,6 +84,12 @@
     renderData.items = data.items || []
     renderData.empty = renderData.items.length === 0
   }
+
+  function taskRecord(id) {
+    uni.navigateTo({
+      url: '/subpkg_task/record/index?id=' + id,
+    })
+  }
 </script>
 
 <template>
@@ -135,8 +141,8 @@
         <view class="footer">
           <view class="label">提货时间</view>
           <view class="time">{{ item.actualDepartureTime }}</view>
-          <button class="action">交付</button>
-          <button v-if="false" class="action">回车登记</button>
+          <button v-if="item.status === 2" class="action">交付</button>
+          <button @click="taskRecord(item.id)" v-if="item.status === 4" class="action">回车登记</button>
         </view>
       </view>
       <view v-if="tabsData[1].empty" class="task-blank">无在途货物</view>
