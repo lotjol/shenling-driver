@@ -33,7 +33,7 @@
       rightText="取消任务"
       title="任务详情"
     />
-    <view class="task-detail">
+    <scroll-view scroll-y class="task-detail">
       <uni-collapse>
         <uni-collapse-item open :show-animation="false" :border="false" title-border="none" title="基本信息">
           <view class="content">
@@ -172,7 +172,7 @@
           </view>
         </uni-collapse-item>
       </uni-collapse>
-    </view>
+    </scroll-view>
     <view class="toolbar">
       <template v-if="true">
         <button class="button delay">延迟提货</button>

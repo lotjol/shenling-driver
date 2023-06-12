@@ -1,17 +1,13 @@
-<script setup>
-  import { ref } from 'vue'
-  // 表单提示文字
-  const placeholder = ref('不可超过2个小时')
-</script>
+<script setup></script>
 
 <template>
   <view class="page-container">
     <uni-list :border="false">
-      <uni-list-item title="原定时间 " showArrow rightText="2022.05.04 13:00" />
+      <uni-list-item title="原定时间 " showArrow rightText="2022-05-04 13:00:00" />
       <uni-list-item title="延迟时间" showArrow>
         <template v-slot:footer>
           <picker class="time-picker" mode="time">
-            <text>{{ placeholder }}</text>
+            <text>不可超过2个小时</text>
           </picker>
         </template>
       </uni-list-item>
