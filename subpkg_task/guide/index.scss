@@ -7,9 +7,6 @@
 .map {
   width: 750rpx;
   height: 100vh;
-  /* #ifdef H5 */
-  height: calc(100vh - 44px);
-  /* #endif  */
 }
 
 .meta {

@@ -1,8 +1,31 @@
 .page-container {
   display: flex;
   flex-direction: column;
+}
 
-  ::v-deep .uni-nav-bar-right-text {
+.search-bar {
+  position: relative;
+  padding: 30rpx;
+  // margin: 30rpx;
+  // border-radius: 16rpx;
+  background-color: #fff;
+
+  .icon-scan {
+    position: absolute;
+    top: 50%;
+    left: 40rpx;
+    padding: 20rpx;
+    font-weight: 600;
+    transform: translateY(-50%);
+    color: $uni-secondary-color;
+    font-size: $uni-font-size-base;
+  }
+
+  .input {
+    height: 64rpx;
+    background-color: #f4f4f4;
+    border-radius: 64rpx;
+    padding-left: 80rpx;
     font-size: $uni-font-size-small;
   }
 }
@@ -11,36 +34,49 @@
   flex: 1;
   overflow: hidden;
 
-  ::v-deep .uni-collapse {
-    background-color: transparent;
-  }
-
-  ::v-deep .uni-collapse-item {
-    margin: 30rpx 30rpx 0;
+  .panel {
+    padding: 30rpx 30rpx 20rpx;
+    margin: 30rpx;
     border-radius: 16rpx;
-    overflow: hidden;
     background-color: #fff;
-
-    &:last-child {
-      margin-bottom: 30rpx;
-    }
   }
 
-  ::v-deep .uni-collapse-item__title-text {
+  .panel-title {
+    padding-bottom: 10rpx;
+    margin-bottom: 30rpx;
     font-size: $uni-font-size-base;
-    font-weight: 500;
     color: $uni-main-color;
   }
 
-  .content {
-    padding: 30rpx;
+  .info-list {
+    padding: 20rpx 10rpx 0;
+    margin-top: 40rpx;
+    border-top: 2rpx solid #f4f4f4;
   }
 
+  .info-list-item {
+    display: flex;
+    justify-content: space-between;
+    line-height: 1;
+    padding: 20rpx 0;
+    font-size: $uni-font-size-small;
+
+    .label {
+      color: $uni-secondary-color;
+    }
+
+    .value {
+      color: $uni-main-color;
+    }
+  }
+}
+
+.basic-info {
   .timeline {
-    border-left: 2rpx dashed #f4f4f4;
-    margin-left: 30rpx;
-    padding: 0 30rpx;
     position: relative;
+    padding: 0 140rpx 0 30rpx;
+    margin-left: 30rpx;
+    border-left: 2rpx dashed #f4f4f4;
 
     &::before,
     &::after {
@@ -77,173 +113,70 @@
         margin-top: 0;
       }
     }
-  }
 
-  .info-list {
-    border-top: 2rpx solid #f4f4f4;
-    padding: 20rpx 10rpx 0;
-    margin-top: 40rpx;
-  }
+    .guide {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      font-size: 24rpx;
+      transform: translateY(-50%);
 
-  .info-list-item {
-    display: flex;
-    justify-content: space-between;
-    line-height: 1;
-    padding: 20rpx 0;
-    font-size: $uni-font-size-small;
-
-    .label {
-      color: $uni-secondary-color;
-    }
-
-    .value {
-      color: $uni-main-color;
-    }
-  }
-}
-
-.driver-info {
-  padding: 10rpx 30rpx 20rpx !important;
-
-  .info-list {
-    padding: 0 10rpx;
-    margin-top: 0;
-    border-top: none;
-  }
-
-  .info-list-item {
-    display: flex;
-    justify-content: space-between;
-    line-height: 1;
-    padding: 20rpx 0;
-    font-size: $uni-font-size-small;
-
-    .label {
-      color: $uni-secondary-color;
-    }
-
-    .value {
-      color: $uni-main-color;
-    }
-  }
-}
-
-.transit-info {
-  display: flex;
-  padding: 20rpx 30rpx !important;
-
-  .transit-line {
-    flex: 1;
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-    padding: 0 40rpx;
-    margin-bottom: 10rpx;
-    font-size: $uni-font-size-small;
-    color: $uni-main-color;
-    background-image: url(https://sl-driver.oss-cn-hangzhou.aliyuncs.com/images/transit-arrow.png);
-    background-size: 74rpx 34rpx;
-    background-repeat: no-repeat;
-    background-position: center;
-
-    .lead {
-      display: block;
-      font-size: $uni-font-size-base;
-      font-weight: 600;
-    }
-  }
-
-  .guide {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    padding: 0 50rpx;
-    font-size: 24rpx;
-    color: 24rpx;
-    border-left: 2rpx solid #f4f4f4;
-
-    .iconfont {
-      margin-bottom: 10rpx;
-      font-size: 40rpx;
+      .iconfont {
+        margin-bottom: 10rpx;
+        font-size: 40rpx;
+      }
     }
   }
 }
 
 .except-info {
-  padding: 0 30rpx 20rpx !important;
+  .panel-title {
+    margin-bottom: 10rpx;
+  }
 
   .info-list {
+    border-top: none;
+    padding: 0 10rpx 10rpx;
     margin-top: 0;
-    border-top: 2rpx solid #f4f4f4;
-    padding: 16rpx 10rpx;
 
-    &:first-child {
-      border-top: none;
-    }
-  }
-
-  .info-list-item {
-    display: flex;
-    line-height: 1;
-    padding: 20rpx 0;
-    font-size: $uni-font-size-small;
-
-    .label {
-      color: $uni-main-color;
-    }
-
-    .value {
-      margin-left: 30rpx;
-      color: $uni-secondary-color;
+    &:last-child {
+      border-top: 2rpx solid #f4f4f4;
+      padding-top: 10rpx;
+      padding-bottom: 0;
     }
   }
 }
 
-.order-info {
-  padding: 20rpx 30rpx !important;
-
-  .search-bar {
-    position: relative;
-
-    .icon-search {
-      position: absolute;
-      top: 15rpx;
-      left: 20rpx;
-      color: $uni-secondary-color;
-      font-size: $uni-font-size-base;
-    }
-
-    .input {
-      height: 64rpx;
-      background-color: #f4f4f4;
-      border-radius: 64rpx;
-      padding-left: 64rpx;
-      font-size: $uni-font-size-small;
-    }
+.pickup-info,
+.delivery-info {
+  .panel-title {
+    margin-bottom: 20rpx;
   }
 
-  .transit-order {
-    padding: 30rpx 10rpx 10rpx;
-    line-height: 2.4;
+  .label {
     font-size: $uni-font-size-small;
-    color: $uni-main-color;
+    color: $uni-secondary-color;
   }
-}
 
-.receipt-info {
-  min-height: 600rpx;
-  padding: 10rpx 30rpx 10rpx !important;
+  .picture {
+    width: 190rpx;
+    height: 190rpx;
+    margin-right: 30rpx;
+    margin-top: 20rpx;
+    border-radius: 8rpx;
+    background-color: #f4f4f4;
 
-  ::v-deep .uni-file-picker {
-    margin-bottom: 30rpx;
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
   }
 }
 
 .toolbar {
-  position: sticky;
-  bottom: 0;
-  z-index: 99;
   display: flex;
   justify-content: space-between;
   padding: 30rpx 30rpx calc(env(safe-area-inset-bottom) + 30rpx);
@@ -252,12 +185,13 @@
 
   .button {
     height: 100rpx;
+    text-align: center;
     line-height: 100rpx;
     border-radius: 100rpx;
     font-size: $uni-font-size-base;
   }
 
-  .delay {
+  .secondary {
     width: 250rpx;
     color: $uni-main-color;
     background-color: #e6e6e6;
@@ -268,24 +202,12 @@
     color: #fff;
     background-color: $uni-primary;
 
+    &.block {
+      width: 690rpx;
+    }
+
     &[disabled] {
       background-color: #fadcd9;
     }
-  }
-}
-
-.action-sheet {
-  background-color: #fff;
-  text-align: center;
-  font-size: $uni-font-size-base;
-  color: $uni-main-color;
-
-  .item {
-    display: block;
-    line-height: 98rpx;
-  }
-
-  .cancel {
-    border-top: 2rpx solid #f4f4f4;
   }
 }

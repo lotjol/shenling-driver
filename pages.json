@@ -60,8 +60,20 @@
         "path": "subpkg_task/except/index"
       },
       {
+        "name": "交货信息",
+        "path": "subpkg_task/delivery/index"
+      },
+      {
+        "name": "查询商品",
+        "path": "subpkg_task/orders/index"
+      },
+      {
         "name": "延迟提货",
         "path": "subpkg_task/delay/index"
+      },
+      {
+        "name": "提货信息",
+        "path": "subpkg_task/pickup/index"
       },
       {
         "name": "回车登记",
@@ -137,8 +149,7 @@
         {
           "path": "detail/index",
           "style": {
-            "navigationBarTitleText": "任务详情",
-            "navigationStyle": "custom"
+            "navigationBarTitleText": "任务详情"
           }
         },
         {
@@ -148,9 +159,27 @@
           }
         },
         {
+          "path": "pickup/index",
+          "style": {
+            "navigationBarTitleText": "提货信息"
+          }
+        },
+        {
           "path": "except/index",
           "style": {
             "navigationBarTitleText": "上报异常"
+          }
+        },
+        {
+          "path": "delivery/index",
+          "style": {
+            "navigationBarTitleText": "交货信息"
+          }
+        },
+        {
+          "path": "orders/index",
+          "style": {
+            "navigationBarTitleText": "查询商品"
           }
         },
         {

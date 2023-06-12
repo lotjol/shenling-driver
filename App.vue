@@ -29,6 +29,9 @@
   /*每个页面公共css */
   .page-container {
     height: 100vh;
+    /* #ifdef H5 */
+    height: calc(100vh - 44px);
+    /* #endif  */
     overflow-y: auto;
     box-sizing: border-box;
     background-color: $uni-bg-color;

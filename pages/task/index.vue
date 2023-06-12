@@ -12,20 +12,42 @@
 <template>
   <view class="page-container">
     <view class="task-tabbar">
-      <text @click="onTabChange(0)" :class="{ active: tabIndex === 0 }" class="tab">待提货</text>
-      <text @click="onTabChange(1)" :class="{ active: tabIndex === 1 }" class="tab">在途</text>
-      <text @click="onTabChange(2)" :class="{ active: tabIndex === 2 }" class="tab">已完成</text>
+      <text
+        @click="onTabChange(0)"
+        :class="{ active: tabIndex === 0 }"
+        class="tab"
+        >待提货</text
+      >
+      <text
+        @click="onTabChange(1)"
+        :class="{ active: tabIndex === 1 }"
+        class="tab"
+        >在途</text
+      >
+      <text
+        @click="onTabChange(2)"
+        :class="{ active: tabIndex === 2 }"
+        class="tab"
+        >已完成</text
+      >
     </view>
-    <scroll-view scroll-y refresher-enabled class="task-list" v-show="tabIndex === 0">
+    <scroll-view
+      scroll-y
+      refresher-enabled
+      class="task-list"
+      v-show="tabIndex === 0"
+    >
       <view class="task-card">
-        <navigator url="/subpkg_task/detail/index?id=001">
+        <navigator hover-class="none" url="/subpkg_task/detail/index?id=001">
           <view class="header">
             <text class="no">任务编号: XAHH1234567</text>
             <text class="status">已延迟</text>
           </view>
           <view class="body">
             <view class="timeline">
-              <view class="line">北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view>
+              <view class="line"
+                >北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view
+              >
               <view class="line">河南省郑州市路北区北清路99号</view>
             </view>
           </view>
@@ -37,13 +59,15 @@
         </view>
       </view>
       <view class="task-card">
-        <navigator url="/subpkg_task/detail/index?id=001">
+        <navigator hover-class="none" url="/subpkg_task/detail/index?id=001">
           <view class="header">
             <text class="no">任务编号: XAHH1234567</text>
           </view>
           <view class="body">
             <view class="timeline">
-              <view class="line">北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view>
+              <view class="line"
+                >北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view
+              >
               <view class="line">河南省郑州市路北区北清路99号</view>
             </view>
           </view>
@@ -56,15 +80,22 @@
       </view>
       <view v-if="false" class="task-blank">无待提货物</view>
     </scroll-view>
-    <scroll-view scroll-y refresher-enabled class="task-list" v-show="tabIndex === 1">
+    <scroll-view
+      scroll-y
+      refresher-enabled
+      class="task-list"
+      v-show="tabIndex === 1"
+    >
       <view class="task-card">
-        <navigator url="/subpkg_task/detail/index?id=001">
+        <navigator hover-class="none" url="/subpkg_task/detail/index?id=001">
           <view class="header">
             <text class="no">任务编号: XAHH1234567</text>
           </view>
           <view class="body">
             <view class="timeline">
-              <view class="line">北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view>
+              <view class="line"
+                >北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view
+              >
               <view class="line">河南省郑州市路北区北清路99号</view>
             </view>
           </view>
@@ -76,13 +107,15 @@
         </view>
       </view>
       <view class="task-card">
-        <navigator url="/subpkg_task/detail/index?id=001">
+        <navigator hover-class="none" url="/subpkg_task/detail/index?id=001">
           <view class="header">
             <text class="no">任务编号: XAHH1234567</text>
           </view>
           <view class="body">
             <view class="timeline">
-              <view class="line">北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view>
+              <view class="line"
+                >北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view
+              >
               <view class="line">河南省郑州市路北区北清路99号</view>
             </view>
           </view>
@@ -107,15 +140,22 @@
         <button disabled class="button">筛选</button>
       </view>
     </view>
-    <scroll-view scroll-y refresher-enabled class="task-list" v-show="tabIndex === 2">
+    <scroll-view
+      scroll-y
+      refresher-enabled
+      class="task-list"
+      v-show="tabIndex === 2"
+    >
       <view v-if="false" class="task-card">
-        <navigator url="/subpkg_task/detail/index?id=001">
+        <navigator hover-class="none" url="/subpkg_task/detail/index?id=001">
           <view class="header">
             <text class="no">任务编号: XAHH1234567</text>
           </view>
           <view class="body">
             <view class="timeline">
-              <view class="line">北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view>
+              <view class="line"
+                >北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</view
+              >
               <view class="line">河南省郑州市路北区北清路99号</view>
             </view>
           </view>
