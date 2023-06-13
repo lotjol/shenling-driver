@@ -55,7 +55,12 @@
         <view class="footer">
           <view class="label">提货时间</view>
           <view class="time">2022.05.04 13:00</view>
-          <button class="action">提货</button>
+          <navigator
+            hover-class="none"
+            url="/subpkg_task/pickup/index"
+            class="action"
+            >提货</navigator
+          >
         </view>
       </view>
       <view class="task-card">
@@ -103,7 +108,13 @@
         <view class="footer">
           <view class="label">提货时间</view>
           <view class="time">2022.05.04 13:00</view>
-          <button class="action">交付</button>
+          <navigator
+            hover-class="none"
+            url="/subpkg_task/delivery/index"
+            class="action"
+          >
+            交付
+          </navigator>
         </view>
       </view>
       <view class="task-card">
@@ -123,7 +134,12 @@
         <view class="footer">
           <view class="label">提货时间</view>
           <view class="time">2022.05.04 13:00</view>
-          <button class="action">回车登记</button>
+          <navigator
+            hover-class="none"
+            url="/subpkg_task/record/indexs"
+            class="action"
+            >回车登记</navigator
+          >
         </view>
       </view>
       <view v-if="false" class="task-blank">无在途货物</view>
