@@ -105,6 +105,7 @@
         <text class="goods-number">1件</text>
         <text class="goods-weight">5KG</text>
       </view>
+      <view v-if="false" class="order-blank">暂无相关商品</view>
     </scroll-view>
   </view>
 </template>
@@ -181,5 +182,20 @@
   .goods-weight {
     width: 120rpx;
     text-align: right;
+  }
+
+  .order-blank {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    width: 201rpx;
+    text-align: center;
+    padding-top: 130rpx;
+    background-image: url(https://sl-driver.oss-cn-hangzhou.aliyuncs.com/images/blank%402x.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    font-size: 24rpx;
+    color: $uni-secondary-color;
+    transform: translate(-50%, -100%);
   }
 </style>

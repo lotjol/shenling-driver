@@ -44,11 +44,19 @@
             <text class="value">13212345678</text>
           </view>
           <view class="info-list-item">
-            <text class="label">提货时间</text>
+            <text class="label">预计提货时间</text>
+            <text class="value">2022.05.04 13:00</text>
+          </view>
+          <view class="info-list-item">
+            <text class="label">实际提货时间</text>
             <text class="value">2022.05.04 13:00</text>
           </view>
           <view class="info-list-item">
             <text class="label">预计送达时间</text>
+            <text class="value">2022.05.05 10:00</text>
+          </view>
+          <view class="info-list-item">
+            <text class="label">实际送达时间</text>
             <text class="value">2022.05.05 10:00</text>
           </view>
         </view>
@@ -92,13 +100,15 @@
         <view class="pictures">
           <image class="picture" src="" mode=""></image>
           <image class="picture" src="" mode=""></image>
-          <image class="picture" src="" mode=""></image>
+          <image class="picture" src="" mode=""></image
+          ><view v-if="false" class="picture-blank">暂无图片</view>
         </view>
         <view class="label">货品照片</view>
         <view class="pictures">
           <image class="picture" src="" mode=""></image>
           <image class="picture" src="" mode=""></image>
           <image class="picture" src="" mode=""></image>
+          <view v-if="false" class="picture-blank">暂无图片</view>
         </view>
       </view>
 
@@ -108,58 +118,58 @@
         <view class="pictures">
           <image class="picture" src="" mode=""></image>
           <image class="picture" src="" mode=""></image>
-          <image class="picture" src="" mode=""></image>
+          <image class="picture" src="" mode=""></image
+          ><view v-if="false" class="picture-blank">暂无图片</view>
         </view>
         <view class="label">货品照片</view>
         <view class="pictures">
           <image class="picture" src="" mode=""></image>
           <image class="picture" src="" mode=""></image>
-          <image class="picture" src="" mode=""></image>
+          <image class="picture" src="" mode=""></image
+          ><view v-if="false" class="picture-blank">暂无图片</view>
         </view>
       </view>
     </scroll-view>
 
-    <view class="toolbar">
-      <template v-if="true">
-        <navigator
-          url="/subpkg_task/delay/index"
-          hover-class="none"
-          class="button secondary"
-          >延迟提货</navigator
-        >
-        <navigator
-          url="/subpkg_task/pickup/index"
-          hover-class="none"
-          class="button primary"
-          >提货</navigator
-        >
-      </template>
-      <template v-if="false">
-        <navigator
-          url="/subpkg_task/except/index"
-          hover-class="none"
-          class="button secondary"
-          >异常上报
-        </navigator>
-        <navigator
-          url="/subpkg_task/delivery/index"
-          hover-class="none"
-          class="button primary"
-          >支付</navigator
-        >
-      </template>
-      <template v-if="false">
-        <navigator hover-class="none" class="button delay">异常上报</navigator>
-        <navigator hover-class="none" class="button primary">支付</navigator>
-      </template>
-      <template v-if="false">
-        <navigator
-          url="/subpkg_task/record/index"
-          hover-class="none"
-          class="button primary block"
-          >回车登记</navigator
-        >
-      </template>
+    <view class="toolbar" v-if="true">
+      <navigator
+        url="/subpkg_task/delay/index"
+        hover-class="none"
+        class="button secondary"
+        >延迟提货</navigator
+      >
+      <navigator
+        url="/subpkg_task/pickup/index"
+        hover-class="none"
+        class="button primary"
+        >提货</navigator
+      >
+    </view>
+    <view v-if="false">
+      <navigator
+        url="/subpkg_task/except/index"
+        hover-class="none"
+        class="button secondary"
+        >异常上报
+      </navigator>
+      <navigator
+        url="/subpkg_task/delivery/index"
+        hover-class="none"
+        class="button primary"
+        >支付</navigator
+      >
+    </view>
+    <view v-if="false">
+      <navigator hover-class="none" class="button delay">异常上报</navigator>
+      <navigator hover-class="none" class="button primary">支付</navigator>
+    </view>
+    <view v-if="false">
+      <navigator
+        url="/subpkg_task/record/index"
+        hover-class="none"
+        class="button primary block"
+        >回车登记</navigator
+      >
     </view>
   </view>
 </template>

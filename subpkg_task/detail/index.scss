@@ -6,11 +6,10 @@
 .search-bar {
   position: relative;
   padding: 30rpx;
-  // margin: 30rpx;
-  // border-radius: 16rpx;
   background-color: #fff;
 
-  .icon-scan {
+  .icon-scan,
+  .icon-search {
     position: absolute;
     top: 50%;
     left: 40rpx;
@@ -162,11 +161,15 @@
     color: $uni-secondary-color;
   }
 
+  .pictures {
+    min-height: 190rpx;
+    position: relative;
+  }
+
   .picture {
     width: 190rpx;
     height: 190rpx;
-    margin-right: 30rpx;
-    margin-top: 20rpx;
+    margin: 20rpx 30rpx 20rpx 0;
     border-radius: 8rpx;
     background-color: #f4f4f4;
 
@@ -174,6 +177,21 @@
       margin-right: 0;
     }
   }
+}
+
+.picture-blank {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 201rpx;
+  text-align: center;
+  padding-top: 130rpx;
+  background-image: url(https://sl-driver.oss-cn-hangzhou.aliyuncs.com/images/blank%402x.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  font-size: 24rpx;
+  color: $uni-secondary-color;
+  transform: translate(-50%, -50%) scale(0.7);
 }
 
 .toolbar {
