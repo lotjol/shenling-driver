@@ -36,7 +36,7 @@
   // 选择日期
   function onPickerChange(ev) {
     delayTime.value =
-      dayjs(planTime.value).format('YYYY-MM-DD ') + ev.detail.value + ':00'
+      dayjs(planTime.value).format('YYYY-MM-DD ') + ev.detail.value
   }
 
   // 延迟交货接口

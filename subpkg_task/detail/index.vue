@@ -89,6 +89,10 @@
             <text class="label">实际送达时间</text>
             <text class="value">{{ taskDetail.actualDepartureTime }}</text>
           </view>
+          <view class="info-list-item">
+            <text class="label">实际送达时间</text>
+            <text class="value">2022.05.05 10:00</text>
+          </view>
         </view>
       </view>
 

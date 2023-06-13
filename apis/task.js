@@ -68,16 +68,14 @@ export default {
   /**
    * 提货
    * @property {string} id - 任务ID
-   * @property {Array} cargoPickUpPicture - 凭证图片
-   * @property {Array} cargoPicture - 货物图片
+   * @property {Array} cargoPickUpPictureList - 凭证图片
+   * @property {Array} cargoPictureList - 货物图片
    */
-  pickup(id, cargoPickUpPicture, cargoPicture) {
-    // if (!id || !cargoPickUpPicture.length || !cargoPicture.length) return
-
+  pickup(id, cargoPickUpPictureList, cargoPictureList) {
     return uniFetch.post('/driver/tasks/takeDelivery', {
       id,
-      cargoPickUpPicture,
-      cargoPicture,
+      cargoPickUpPictureList,
+      cargoPictureList,
     })
   },
 

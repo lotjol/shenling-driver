@@ -162,16 +162,14 @@
   }
 
   .pictures {
-    min-height: 200rpx;
+    min-height: 190rpx;
     position: relative;
   }
 
   .picture {
     width: 190rpx;
     height: 190rpx;
-    margin-right: 30rpx;
-    margin-top: 20rpx;
-    margin-bottom: 20rpx;
+    margin: 20rpx 30rpx 20rpx 0;
     border-radius: 8rpx;
     background-color: #f4f4f4;
 
