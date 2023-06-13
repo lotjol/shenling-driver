@@ -18,9 +18,10 @@ export default {
 
   /**
    * 任务详情
-   * @@param {string} id - 任务ID
+   * @param {string} id - 任务ID
    */
-  detail(id = '1665989068002979841') {
+  detail(id) {
+    if (!id) return
     return uniFetch.get(`/driver/tasks/details/${id}`)
   },
 
@@ -54,7 +55,8 @@ export default {
           Authorization: userStore.token,
         },
         success({ statusCode, data }) {
-          if (statusCode !== 200) return resolve({ code: statusCode, msg: '上传失败!' })
+          if (statusCode !== 200)
+            return resolve({ code: statusCode, msg: '上传失败!' })
           resolve(JSON.parse(data))
         },
         fail: reject,
@@ -65,14 +67,18 @@ export default {
 
   /**
    * 提货
-   * @param {Object} data - 接口参数
-   * @property {string} data.id - 任务ID
-   * @property {string} data.cargoPickUpPicture - 凭证图片
-   * @property {string} data.cargoPicture - 货物图片
+   * @property {string} id - 任务ID
+   * @property {Array} cargoPickUpPicture - 凭证图片
+   * @property {Array} cargoPicture - 货物图片
    */
-  pickup(data) {
-    if (!data.id) return
-    return uniFetch.post('/driver/tasks/takeDelivery', data)
+  pickup(id, cargoPickUpPicture, cargoPicture) {
+    // if (!id || !cargoPickUpPicture.length || !cargoPicture.length) return
+
+    return uniFetch.post('/driver/tasks/takeDelivery', {
+      id,
+      cargoPickUpPicture,
+      cargoPicture,
+    })
   },
 
   /**

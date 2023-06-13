@@ -3,9 +3,7 @@
   import { onLoad } from '@dcloudio/uni-app'
   import taskApi from '@/apis/task'
 
-  // 弹层实例
-  const popup = ref(null)
-  // 任务详情数据
+  // 任务详情
   const taskDetail = ref({})
 
   // 获取地址参数
@@ -13,286 +11,224 @@
     getTaskDetail(params.id)
   })
 
-  // 任务详情
   async function getTaskDetail(id) {
-    /**************/
-    id = undefined
-    /**************/
+    if (!id) return
     const { code, data } = await taskApi.detail(id)
     if (code !== 200) return uni.$utils.toast()
-    /*********************/
-    data.cargoPickUpPicture = data.cargoPickUpPicture.map((item) => {
-      return { url: item }
-    })
-    data.cargoPicture = data.cargoPicture.map((item) => {
-      return { url: item }
-    })
-    /********************/
-
-    /*********************/
-    data.transportCertificate = data.transportCertificate.map((item) => {
-      return { url: item }
-    })
-    data.deliverPicture = data.deliverPicture.map((item) => {
-      return { url: item }
-    })
-    /********************/
     taskDetail.value = data
   }
 
-  // 延迟提货
-  function delayPickUp(id, planTime) {
-    /**********/
-    planTime = planTime || '2023-06-10 13:10'
-    /**********/
-
-    if (!id) return
+  // 根据运单号搜索商品
+  function onInputConfirm(ev) {
     uni.navigateTo({
-      url: `/subpkg_task/delay/index?id=${id}&planTime=${planTime}`,
+      url: `/subpkg_task/orders/index?xxx=${ev.detail.value}`,
     })
   }
 
-  // 提货
-  function pickUp(id) {
-    if (!id) return
-    let { cargoPickUpPicture, cargoPicture } = taskDetail.value
-    if (cargoPickUpPicture.length === 0) return uni.$utils.toast('请上传回单凭证!')
-    if (cargoPicture.length === 0) return uni.$utils.toast('请上传货品照片!')
-
-    /***************************/
-    // 使用 , 拼接图片路径
-    cargoPickUpPicture = cargoPickUpPicture.map((item) => item.url).join(',')
-    cargoPicture = cargoPicture.map((item) => item.url).join(',')
-    /***************************/
-    taskApi.pickup({ id, cargoPickUpPicture, cargoPicture })
-  }
-
-  function exceptionReport(id) {
-    if (!id) return
-    uni.navigateTo({
-      url: `/subpkg_task/except/index?id=${id}`,
-    })
-  }
-
-  function delivery(id) {
-    if (!id) return
-    let { transportCertificate, deliverPicture } = taskDetail.value
-    if (transportCertificate.length === 0) return uni.$utils.toast('请上传回单凭证!')
-    if (deliverPicture.length === 0) return uni.$utils.toast('请上传货品照片!')
-
-    /***************************/
-    // 使用 , 拼接图片路径
-    deliverPicture = deliverPicture.map((item) => item.url).join(',')
-    transportCertificate = transportCertificate.map((item) => item.url).join(',')
-    /***************************/
-    taskApi.delivery({ id, transportCertificate, deliverPicture })
-  }
-
-  // 路由返回
-  function goBack() {
-    uni.navigateBack()
-  }
-
-  // 取消任务
-  function cancelTask() {
-    popup.value.open()
+  // 在小程序或APP 中扫码
+  function onScanCode() {
+    uni.scanCode({})
   }
 </script>
 
 <template>
-  <view class="page-container">
-    <uni-nav-bar
-      @clickLeft="goBack"
-      @clickRight="cancelTask"
-      :border="false"
-      fixed
-      statusBar
-      left-icon="left"
-      rightText="取消任务"
-      title="任务详情"
-    />
-    <scroll-view scroll-y class="task-detail">
-      <uni-collapse>
-        <uni-collapse-item open :show-animation="false" :border="false" title-border="none" title="基本信息">
-          <view class="content">
-            <view class="timeline">
-              <view class="line">{{ taskDetail.startAddress }}</view>
-              <view class="line">{{ taskDetail.endAddress }}</view>
-            </view>
-            <view class="info-list">
-              <view class="info-list-item">
-                <text class="label">任务编号</text>
-                <text class="value">{{ taskDetail.transportTaskId }}</text>
-              </view>
-              <view class="info-list-item">
-                <text class="label">联系人</text>
-                <text class="value">{{ taskDetail.finishHandover }}</text>
-              </view>
-              <view class="info-list-item">
-                <text class="label">联系电话</text>
-                <text class="value">{{ taskDetail.finishHandoverPhone }}</text>
-              </view>
-              <view class="info-list-item">
-                <text class="label">提货时间</text>
-                <text class="value">{{ taskDetail.planDepartureTime }}</text>
-              </view>
-              <view class="info-list-item">
-                <text class="label">预计送达时间</text>
-                <text class="value">{{ taskDetail.planArrivalTime }}</text>
-              </view>
-            </view>
-          </view>
-        </uni-collapse-item>
-        <uni-collapse-item :border="false" :show-animation="false" title-border="none" title="车辆司机信息">
-          <view class="content driver-info">
-            <view class="info-list">
-              <view class="info-list-item">
-                <text class="label">车牌号</text>
-                <text class="value">{{ taskDetail.licensePlate }}</text>
-              </view>
-              <view class="info-list-item">
-                <text class="label">司机姓名</text>
-                <text class="value">{{ taskDetail.driverName }}</text>
-              </view>
-            </view>
-          </view>
-        </uni-collapse-item>
-        <uni-collapse-item :border="false" :show-animation="false" title-border="none" title="运输路线">
-          <view class="content transit-info">
-            <view class="transit-line">
-              <view class="start">
-                <text class="lead">{{ taskDetail.startProvince }}</text>
-                <text class="normal">{{ taskDetail.startCity }}</text>
-              </view>
-              <view class="end">
-                <text class="lead">{{ taskDetail.endProvince }}</text>
-                <text class="normal">{{ taskDetail.endCity }}</text>
-              </view>
-            </view>
-            <navigator hover-class="none" url="/subpkg_task/guide/index" class="guide">
-              <text class="iconfont icon-guide"></text>
-              <text>开始导航</text>
-            </navigator>
-          </view>
-        </uni-collapse-item>
-        <uni-collapse-item :border="false" :show-animation="false" title-border="none" title="异常信息">
-          <view class="content except-info">
-            <view class="info-list">
-              <view class="info-list-item">
-                <text class="label">上报时间</text>
-                <text class="value">2022.05.04 13:00</text>
-              </view>
-              <view class="info-list-item">
-                <text class="label">异常类型</text>
-                <text class="value">有异常响动</text>
-              </view>
-              <view class="info-list-item">
-                <text class="label">处理结果</text>
-                <text class="value">继续运输</text>
-              </view>
-            </view>
-            <view class="info-list">
-              <view class="info-list-item">
-                <text class="label">上报时间</text>
-                <text class="value">2022.05.04 13:00</text>
-              </view>
-              <view class="info-list-item">
-                <text class="label">异常类型</text>
-                <text class="value">有异常响动</text>
-              </view>
-              <view class="info-list-item">
-                <text class="label">处理结果</text>
-                <text class="value">继续运输</text>
-              </view>
-            </view>
-          </view>
-        </uni-collapse-item>
-        <uni-collapse-item :border="false" :show-animation="false" title-border="none" title="物品信息">
-          <view class="content order-info">
-            <view class="search-bar">
-              <text class="iconfont icon-search"></text>
-              <input class="input" type="text" placeholder="输入运单号" />
-            </view>
-            <view class="transit-order">
-              <uni-row>
-                <uni-col :span="14">SD1234567890123</uni-col>
-                <uni-col :span="6">1件</uni-col>
-                <uni-col style="text-align: right" :span="4">5kg</uni-col>
-              </uni-row>
-              <uni-row>
-                <uni-col :span="14">SD1234567890123</uni-col>
-                <uni-col :span="6">1件</uni-col>
-                <uni-col style="text-align: right" :span="4">5kg</uni-col>
-              </uni-row>
-              <uni-row>
-                <uni-col :span="14">SD1234567890123</uni-col>
-                <uni-col :span="6">1件</uni-col>
-                <uni-col style="text-align: right" :span="4">5kg</uni-col>
-              </uni-row>
-              <uni-row>
-                <uni-col :span="14">SD1234567890123</uni-col>
-                <uni-col :span="6">1件</uni-col>
-                <uni-col style="text-align: right" :span="4">5kg</uni-col>
-              </uni-row>
-            </view>
-          </view>
-        </uni-collapse-item>
-        <uni-collapse-item :border="false" :show-animation="false" title-border="none" title="提货信息">
-          <view class="content receipt-info">
-            <uni-file-picker
-              v-model="taskDetail.cargoPickUpPicture"
-              file-mediatype="image"
-              file-extname="png,jpg,gif"
-              limit="3"
-              title="请拍照上传回单凭证"
-            ></uni-file-picker>
-            <uni-file-picker
-              v-model="taskDetail.cargoPicture"
-              file-mediatype="image"
-              file-extname="png,jpg,gif"
-              limit="3"
-              title="请拍照上传货品照片"
-            ></uni-file-picker>
-          </view>
-        </uni-collapse-item>
-        <uni-collapse-item :border="false" :show-animation="false" title-border="none" title="交货信息">
-          <view class="content delivery-info">
-            <uni-file-picker
-              v-model="taskDetail.transportCertificate"
-              file-mediatype="image"
-              file-extname="png,jpg,gif"
-              limit="3"
-              title="请拍照上传回单凭证"
-            ></uni-file-picker>
-            <uni-file-picker
-              v-model="taskDetail.deliverPicture"
-              file-mediatype="image"
-              file-extname="png,jpg,gif"
-              limit="3"
-              title="请拍照上传货品照片"
-            ></uni-file-picker>
-          </view>
-        </uni-collapse-item>
-      </uni-collapse>
-    </scroll-view>
-    <view class="toolbar">
-      <template v-if="taskDetail.status === 1">
-        <button @click="delayPickUp(taskDetail.id, taskDetail.planDepartureTime)" class="button delay">
-          延迟提货
-        </button>
-        <button @click="pickUp(taskDetail.id)" class="button primary">提货</button>
-      </template>
-      <template v-if="taskDetail.status === 2">
-        <button @click="exceptionReport(taskDetail.id)" class="button delay">异常上报</button>
-        <button @click="delivery(taskDetail.id)" class="button primary">交付</button>
-      </template>
+  <view class="page-container" v-if="taskDetail">
+    <view class="search-bar">
+      <!-- #ifndef H5 -->
+      <text @click="onScanCode" class="iconfont icon-scan"></text>
+      <!-- #endif -->
+      <text class="iconfont icon-search"></text>
+      <input
+        class="input"
+        @confirm="onInputConfirm"
+        type="text"
+        placeholder="输入运单号"
+      />
     </view>
-    <uni-popup ref="popup" type="bottom">
-      <view class="action-sheet">
-        <text class="item">010-9987 0098</text>
-        <text class="item cancel">取消</text>
+    <scroll-view scroll-y class="task-detail">
+      <view class="basic-info panel">
+        <view class="panel-title">基本信息</view>
+        <view class="timeline">
+          <view class="line">{{ taskDetail.startAddress }}</view>
+          <view class="line">{{ taskDetail.endAddress }}</view>
+          <navigator
+            hover-class="none"
+            url="/subpkg_task/guide/index"
+            class="guide"
+          >
+            <text class="iconfont icon-guide"></text>
+            <text>开始导航</text>
+          </navigator>
+        </view>
+        <view class="info-list">
+          <view class="info-list-item">
+            <text class="label">任务编号</text>
+            <text class="value">{{ taskDetail.transportTaskId }}</text>
+          </view>
+          <view class="info-list-item">
+            <text class="label">联系人</text>
+            <text class="value">{{ taskDetail.startHandover }}</text>
+          </view>
+          <view class="info-list-item">
+            <text class="label">联系电话</text>
+            <text class="value">{{ taskDetail.startHandoverPhone }}</text>
+          </view>
+          <view class="info-list-item">
+            <text class="label">预计提货时间</text>
+            <text class="value">{{ taskDetail.planDepartureTime }}</text>
+          </view>
+          <view class="info-list-item">
+            <text class="label">实际提货时间</text>
+            <text class="value">{{ taskDetail.actualDepartureTime }}</text>
+          </view>
+          <view class="info-list-item">
+            <text class="label">预计送达时间</text>
+            <text class="value">{{ taskDetail.planArrivalTime }}</text>
+          </view>
+          <view class="info-list-item">
+            <text class="label">实际送达时间</text>
+            <text class="value">{{ taskDetail.actualDepartureTime }}</text>
+          </view>
+        </view>
       </view>
-    </uni-popup>
+
+      <view class="except-info panel">
+        <view class="panel-title">异常信息</view>
+        <view class="info-list">
+          <view class="info-list-item">
+            <text class="label">上报时间</text>
+            <text class="value">2022.05.04 13:00</text>
+          </view>
+          <view class="info-list-item">
+            <text class="label">异常类型</text>
+            <text class="value">有异常响动</text>
+          </view>
+          <view class="info-list-item">
+            <text class="label">处理结果</text>
+            <text class="value">继续运输</text>
+          </view>
+        </view>
+        <view class="info-list">
+          <view class="info-list-item">
+            <text class="label">上报时间</text>
+            <text class="value">2022.05.04 13:00</text>
+          </view>
+          <view class="info-list-item">
+            <text class="label">异常类型</text>
+            <text class="value">有异常响动</text>
+          </view>
+          <view class="info-list-item">
+            <text class="label">处理结果</text>
+            <text class="value">继续运输</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="panel pickup-info">
+        <view class="panel-title">提货信息</view>
+        <view class="label">提货凭证</view>
+        <view class="pictures">
+          <image
+            v-for="picture in taskDetail.cargoPickUpPictureList"
+            :key="picture.url"
+            class="picture"
+            :src="picture.url"
+            mode="aspectFill"
+          />
+          <view
+            v-if="!taskDetail.cargoPickUpPictureList?.length"
+            class="picture-blank"
+            >暂无图片</view
+          >
+        </view>
+        <view class="label">货品照片</view>
+        <view class="pictures">
+          <image
+            v-for="picture in taskDetail.cargoPictureList"
+            :key="picture.url"
+            class="picture"
+            :src="picture.url"
+            mode="aspectFill"
+          />
+          <view
+            v-if="!taskDetail.cargoPictureList?.length"
+            class="picture-blank"
+            >暂无图片</view
+          >
+        </view>
+      </view>
+
+      <view class="delivery-info panel">
+        <view class="panel-title">交货信息</view>
+        <view class="label">交货凭证</view>
+        <view class="pictures">
+          <image
+            v-for="picture in taskDetail.transportCertificateList"
+            :key="picture.url"
+            class="picture"
+            :src="picture.url"
+            mode="aspectFill"
+          />
+          <view
+            v-if="!taskDetail.transportCertificateList?.length"
+            class="picture-blank"
+            >暂无图片</view
+          >
+        </view>
+        <view class="label">货品照片</view>
+        <view class="pictures">
+          <image
+            v-for="picture in taskDetail.deliverPictureList"
+            :key="picture.url"
+            class="picture"
+            :src="picture.url"
+            mode="aspectFill"
+          />
+          <view
+            v-if="!taskDetail.deliverPictureList?.length"
+            class="picture-blank"
+            >暂无图片</view
+          >
+        </view>
+      </view>
+    </scroll-view>
+
+    <view v-if="true" class="toolbar">
+      <navigator
+        :url="`/subpkg_task/delay/index?id=${taskDetail.id}&planTime=${taskDetail.planDepartureTime}`"
+        hover-class="none"
+        class="button secondary"
+        >延迟提货</navigator
+      >
+      <navigator
+        :url="`/subpkg_task/pickup/index?id=${taskDetail.id}`"
+        hover-class="none"
+        class="button primary"
+        >提货</navigator
+      >
+    </view>
+    <view v-if="false" class="toolbar">
+      <navigator
+        :url="`/subpkg_task/except/index?id=${taskDetail.id}`"
+        hover-class="none"
+        class="button secondary"
+        >异常上报
+      </navigator>
+      <navigator
+        :url="`/subpkg_task/delivery/index?id=${taskDetail.id}`"
+        hover-class="none"
+        class="button primary"
+        >交付</navigator
+      >
+    </view>
+    <view v-if="false" class="toolbar">
+      <navigator
+        :url="`/subpkg_task/record/index?id=${taskDetail.id}`"
+        hover-class="none"
+        class="button primary block"
+        >回车登记</navigator
+      >
+    </view>
   </view>
 </template>
 

@@ -3,14 +3,17 @@
   import { onLoad } from '@dcloudio/uni-app'
   import taskApi from '@/apis/task'
 
+  // 时间处理插件
   import dayjs from 'dayjs'
   import isBetween from 'dayjs/plugin/isBetween'
   dayjs.extend(isBetween)
 
+  // 初始数据
+  let id = '' // 任务ID
   const planTime = ref('')
   const delayTime = ref('')
   const delayReason = ref('')
-  
+
   // 统计输入的字数
   const wordsCount = computed(() => delayReason.value.length)
   // 按钮状态
@@ -30,12 +33,10 @@
     return wordsCount.value <= 50 && wordsCount.value > 0
   })
 
-  // 任务ID
-  let id = ''
-
   // 选择日期
   function onPickerChange(ev) {
-    delayTime.value = dayjs(planTime.value).format('YYYY-MM-DD ') + ev.detail.value + ':00'
+    delayTime.value =
+      dayjs(planTime.value).format('YYYY-MM-DD ') + ev.detail.value + ':00'
   }
 
   // 延迟交货接口
@@ -44,16 +45,22 @@
     if (!delayTimeValid.value) return uni.$utils.toast('时间不能超过2小时!')
     if (!delayReasonValid.value) return uni.$utils.toast('字数不超过50字!')
     // 调用接口
-    const { code } = await taskApi.delay({ id, delayReason: delayReason.value, delayTime: delayTime.value })
+    const { code } = await taskApi.delay({
+      id,
+      delayReason: delayReason.value,
+      delayTime: delayTime.value,
+    })
     if (code !== 200) return uni.$utils.toast()
+    // 回到任务首页
+    uni.reLaunch({ url: '/pages/task/index?status=1' })
   }
 
-  // 获取地址参数
   onLoad((params) => {
-    // 原定提货时间
-    planTime.value = params.planTime
     // 任务的ID
     id = params.id
+    // 原定提货时间
+    // planTime.value = params.planTime
+    planTime.value = '2023-06-15 12:00:00'
   })
 </script>
 
@@ -76,15 +83,25 @@
               class="textarea"
               placeholder-style="color: #818181"
               placeholder="请输入延迟提货原因"
-              v-model="delayReason"
+              v-model.trim="delayReason"
             ></textarea>
-            <text :class="{ error: delayReason.length > 50 }" class="words-count">{{ wordsCount }}/50</text>
+            <text
+              :class="{ error: delayReason.length > 50 }"
+              class="words-count"
+              >{{ wordsCount }}/50</text
+            >
           </view>
         </template>
       </uni-list-item>
       <uni-list-item :border="false">
         <template v-slot:body>
-          <button @click="onSubmitForm" :disabled="!buttonEnable" class="button">提交</button>
+          <button
+            @click="onSubmitForm"
+            :disabled="!buttonEnable"
+            class="button"
+          >
+            提交
+          </button>
         </template>
       </uni-list-item>
     </uni-list>

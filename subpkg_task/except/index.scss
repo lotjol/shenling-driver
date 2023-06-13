@@ -1,9 +1,6 @@
 .page-container {
   display: flex;
   flex-direction: column;
-  /* #ifdef H5 */
-  height: calc(100vh - 44px);
-  /* #endif */
   border-top: 1rpx solid #eee;
   padding-bottom: env(safe-area-inset-bottom);
 

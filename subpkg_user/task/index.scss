@@ -1,8 +1,4 @@
 .page-container {
-  height: 100vh;
-  /* #ifdef H5 */
-  height: calc(100vh - 44px);
-  /* #endif */
 }
 
 .data-overview {
