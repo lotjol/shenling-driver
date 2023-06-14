@@ -1,12 +1,16 @@
 .page-container {
   display: flex;
   flex-direction: column;
-  padding: 30rpx 30rpx env(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .scroll-view {
   flex: 1;
   overflow: hidden;
+}
+
+.scroll-view-wrapper {
+  padding: 30rpx 30rpx 0;
 }
 
 .base-info {
