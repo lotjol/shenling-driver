@@ -5,107 +5,99 @@
       <input class="input" type="text" placeholder="输入运单号" />
     </view>
     <scroll-view class="order-list" scroll-y>
-      <view class="order-list-item">
-        <text class="order-no">SD1234567890123</text>
-        <text class="goods-number">1件</text>
-        <text class="goods-weight">5KG</text>
+      <view class="scroll-view-wrapper">
+        <view class="order-list-item">
+          <text class="order-no">SD1234567890123</text>
+          <text class="goods-number">1件</text>
+          <text class="goods-weight">5KG</text>
+        </view>
+        <view class="order-list-item">
+          <text class="order-no">SD1234567890123</text>
+          <text class="goods-number">1件</text>
+          <text class="goods-weight">5KG</text>
+        </view>
+        <view class="order-list-item">
+          <text class="order-no">SD1234567890123</text>
+          <text class="goods-number">1件</text>
+          <text class="goods-weight">5KG</text>
+        </view>
+        <view class="order-list-item">
+          <text class="order-no">SD1234567890123</text>
+          <text class="goods-number">1件</text>
+          <text class="goods-weight">5KG</text>
+        </view>
+        <view class="order-list-item">
+          <text class="order-no">SD1234567890123</text>
+          <text class="goods-number">1件</text>
+          <text class="goods-weight">5KG</text>
+        </view>
+        <view class="order-list-item">
+          <text class="order-no">SD1234567890123</text>
+          <text class="goods-number">1件</text>
+          <text class="goods-weight">5KG</text>
+        </view>
+        <view class="order-list-item">
+          <text class="order-no">SD1234567890123</text>
+          <text class="goods-number">1件</text>
+          <text class="goods-weight">5KG</text>
+        </view>
+        <view class="order-list-item">
+          <text class="order-no">SD1234567890123</text>
+          <text class="goods-number">1件</text>
+          <text class="goods-weight">5KG</text>
+        </view>
+        <view class="order-list-item">
+          <text class="order-no">SD1234567890123</text>
+          <text class="goods-number">1件</text>
+          <text class="goods-weight">5KG</text>
+        </view>
+        <view class="order-list-item">
+          <text class="order-no">SD1234567890123</text>
+          <text class="goods-number">1件</text>
+          <text class="goods-weight">5KG</text>
+        </view>
+        <view class="order-list-item">
+          <text class="order-no">SD1234567890123</text>
+          <text class="goods-number">1件</text>
+          <text class="goods-weight">5KG</text>
+        </view>
+        <view class="order-list-item">
+          <text class="order-no">SD1234567890123</text>
+          <text class="goods-number">1件</text>
+          <text class="goods-weight">5KG</text>
+        </view>
+        <view class="order-list-item">
+          <text class="order-no">SD1234567890123</text>
+          <text class="goods-number">1件</text>
+          <text class="goods-weight">5KG</text>
+        </view>
+        <view class="order-list-item">
+          <text class="order-no">SD1234567890123</text>
+          <text class="goods-number">1件</text>
+          <text class="goods-weight">5KG</text>
+        </view>
+        <view class="order-list-item">
+          <text class="order-no">SD1234567890123</text>
+          <text class="goods-number">1件</text>
+          <text class="goods-weight">5KG</text>
+        </view>
+        <view class="order-list-item">
+          <text class="order-no">SD1234567890123</text>
+          <text class="goods-number">1件</text>
+          <text class="goods-weight">5KG</text>
+        </view>
+        <view class="order-list-item">
+          <text class="order-no">SD1234567890123</text>
+          <text class="goods-number">1件</text>
+          <text class="goods-weight">5KG</text>
+        </view>
+        <view class="order-list-item">
+          <text class="order-no">SD1234567890123</text>
+          <text class="goods-number">1件</text>
+          <text class="goods-weight">5KG</text>
+        </view>
+        <view v-if="false" class="order-blank">暂无相关商品</view>
       </view>
-      <view class="order-list-item">
-        <text class="order-no">SD1234567890123</text>
-        <text class="goods-number">1件</text>
-        <text class="goods-weight">5KG</text>
-      </view>
-      <view class="order-list-item">
-        <text class="order-no">SD1234567890123</text>
-        <text class="goods-number">1件</text>
-        <text class="goods-weight">5KG</text>
-      </view>
-      <view class="order-list-item">
-        <text class="order-no">SD1234567890123</text>
-        <text class="goods-number">1件</text>
-        <text class="goods-weight">5KG</text>
-      </view>
-      <view class="order-list-item">
-        <text class="order-no">SD1234567890123</text>
-        <text class="goods-number">1件</text>
-        <text class="goods-weight">5KG</text>
-      </view>
-      <view class="order-list-item">
-        <text class="order-no">SD1234567890123</text>
-        <text class="goods-number">1件</text>
-        <text class="goods-weight">5KG</text>
-      </view>
-      <view class="order-list-item">
-        <text class="order-no">SD1234567890123</text>
-        <text class="goods-number">1件</text>
-        <text class="goods-weight">5KG</text>
-      </view>
-      <view class="order-list-item">
-        <text class="order-no">SD1234567890123</text>
-        <text class="goods-number">1件</text>
-        <text class="goods-weight">5KG</text>
-      </view>
-      <view class="order-list-item">
-        <text class="order-no">SD1234567890123</text>
-        <text class="goods-number">1件</text>
-        <text class="goods-weight">5KG</text>
-      </view>
-      <view class="order-list-item">
-        <text class="order-no">SD1234567890123</text>
-        <text class="goods-number">1件</text>
-        <text class="goods-weight">5KG</text>
-      </view>
-      <view class="order-list-item">
-        <text class="order-no">SD1234567890123</text>
-        <text class="goods-number">1件</text>
-        <text class="goods-weight">5KG</text>
-      </view>
-      <view class="order-list-item">
-        <text class="order-no">SD1234567890123</text>
-        <text class="goods-number">1件</text>
-        <text class="goods-weight">5KG</text>
-      </view>
-      <view class="order-list-item">
-        <text class="order-no">SD1234567890123</text>
-        <text class="goods-number">1件</text>
-        <text class="goods-weight">5KG</text>
-      </view>
-      <view class="order-list-item">
-        <text class="order-no">SD1234567890123</text>
-        <text class="goods-number">1件</text>
-        <text class="goods-weight">5KG</text>
-      </view>
-      <view class="order-list-item">
-        <text class="order-no">SD1234567890123</text>
-        <text class="goods-number">1件</text>
-        <text class="goods-weight">5KG</text>
-      </view>
-      <view class="order-list-item">
-        <text class="order-no">SD1234567890123</text>
-        <text class="goods-number">1件</text>
-        <text class="goods-weight">5KG</text>
-      </view>
-      <view class="order-list-item">
-        <text class="order-no">SD1234567890123</text>
-        <text class="goods-number">1件</text>
-        <text class="goods-weight">5KG</text>
-      </view>
-      <view class="order-list-item">
-        <text class="order-no">SD1234567890123</text>
-        <text class="goods-number">1件</text>
-        <text class="goods-weight">5KG</text>
-      </view>
-      <view class="order-list-item">
-        <text class="order-no">SD1234567890123</text>
-        <text class="goods-number">1件</text>
-        <text class="goods-weight">5KG</text>
-      </view>
-      <view class="order-list-item">
-        <text class="order-no">SD1234567890123</text>
-        <text class="goods-number">1件</text>
-        <text class="goods-weight">5KG</text>
-      </view>
-      <view v-if="false" class="order-blank">暂无相关商品</view>
     </scroll-view>
   </view>
 </template>

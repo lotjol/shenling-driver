@@ -51,6 +51,10 @@
     background-color: transparent !important;
   }
 
+  .scroll-view-wrapper {
+    overflow: hidden;
+  }
+
   .uni-nav-bar-text {
     /* #ifndef APP-PLUS */
     font-size: 16px !important;
