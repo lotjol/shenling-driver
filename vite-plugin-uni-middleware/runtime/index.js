@@ -14,7 +14,9 @@ function createNavigationGuardPlugin() {
           if (page.route === (from == null ? void 0 : from.route)) return
           to = page
           try {
-            const pageMiddlewares = middlewares.global.concat((_a = middlewares[to.route]) != null ? _a : [])
+            const pageMiddlewares = middlewares.global.concat(
+              (_a = middlewares[to.route]) != null ? _a : []
+            )
             for (let middleware of pageMiddlewares) {
               const result = await middleware(to, from)
               if (result === void 0) {
@@ -48,8 +50,6 @@ function createNavigationGuardPlugin() {
     },
   }
 }
-function defineMiddleware(middleware) {
-  return middleware
-}
-export { createNavigationGuardPlugin, defineMiddleware }
+
+export { createNavigationGuardPlugin }
 //# sourceMappingURL=index.js.map

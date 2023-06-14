@@ -85,9 +85,7 @@
               placeholder="请输入延迟提货原因"
               v-model.trim="delayReason"
             ></textarea>
-            <text
-              :class="{ error: delayReason.length > 50 }"
-              class="words-count"
+            <text :class="{ error: wordsCount > 50 }" class="words-count"
               >{{ wordsCount }}/50</text
             >
           </view>

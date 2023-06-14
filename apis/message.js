@@ -12,6 +12,15 @@ export default {
     if (!data.contentType) return
     return uniFetch.get('/driver/messages/page', data)
   },
+
+  /**
+   * 全部标记为已读
+   * @param {string} 消息类型
+   */
+  allIsRead(contentType) {
+    return uniFetch.put(`/driver/messages/readAll/${contentType}`)
+  },
+
   /**
    * 全部已读
    * @@param {string} contentType - 消息类型

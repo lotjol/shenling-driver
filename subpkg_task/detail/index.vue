@@ -67,7 +67,7 @@
           </view>
           <view class="info-list-item">
             <text class="label">联系人</text>
-            <text class="value">{{ taskDetail.startHandover }}</text>
+            <text class="value">{{ taskDetail.startHandoverName }}</text>
           </view>
           <view class="info-list-item">
             <text class="label">联系电话</text>
@@ -88,10 +88,6 @@
           <view class="info-list-item">
             <text class="label">实际送达时间</text>
             <text class="value">{{ taskDetail.actualDepartureTime }}</text>
-          </view>
-          <view class="info-list-item">
-            <text class="label">实际送达时间</text>
-            <text class="value">2022.05.05 10:00</text>
           </view>
         </view>
       </view>
@@ -167,14 +163,14 @@
         <view class="label">交货凭证</view>
         <view class="pictures">
           <image
-            v-for="picture in taskDetail.transportCertificateList"
+            v-for="picture in taskDetail.certificatePictureList"
             :key="picture.url"
             class="picture"
             :src="picture.url"
             mode="aspectFill"
           />
           <view
-            v-if="!taskDetail.transportCertificateList?.length"
+            v-if="!taskDetail.certificatePictureList?.length"
             class="picture-blank"
             >暂无图片</view
           >
@@ -197,7 +193,7 @@
       </view>
     </scroll-view>
 
-    <view v-if="true" class="toolbar">
+    <view v-if="taskDetail.status === 1" class="toolbar">
       <navigator
         :url="`/subpkg_task/delay/index?id=${taskDetail.id}&planTime=${taskDetail.planDepartureTime}`"
         hover-class="none"
@@ -211,7 +207,7 @@
         >提货</navigator
       >
     </view>
-    <view v-if="false" class="toolbar">
+    <view v-if="taskDetail.status === 2" class="toolbar">
       <navigator
         :url="`/subpkg_task/except/index?id=${taskDetail.id}`"
         hover-class="none"
@@ -225,7 +221,7 @@
         >交付</navigator
       >
     </view>
-    <view v-if="false" class="toolbar">
+    <view v-if="taskDetail.status === 4" class="toolbar">
       <navigator
         :url="`/subpkg_task/record/index?id=${taskDetail.id}`"
         hover-class="none"

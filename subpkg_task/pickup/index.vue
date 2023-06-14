@@ -52,7 +52,7 @@
         v-model="receiptPictrues"
         file-extname="jpg,webp,gif,png"
         limit="3"
-        title="请拍照上传回单凭证"
+        title="请拍照上传收货凭证"
       ></uni-file-picker>
       <uni-file-picker
         v-model="goodsPictrues"

@@ -1,5 +1,14 @@
 <script setup>
   import { ref } from 'vue'
+  import { onLoad } from '@dcloudio/uni-app'
+  import taskApi from '@/apis/task'
+
+  const startPoint = ref('北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号')
+  const endPoint = ref('河南省郑州市路北区北清路99号')
+
+  onLoad(() => {})
+
+  taskApi.location(startPoint)
 
   // 初始经纬度
   const latitude = ref(39.909)

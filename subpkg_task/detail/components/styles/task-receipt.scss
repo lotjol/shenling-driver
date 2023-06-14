@@ -1,0 +1,8 @@
+.content {
+  min-height: 600rpx;
+  padding: 20rpx 30rpx;
+
+  ::v-deep .uni-file-picker {
+    margin-bottom: 30rpx;
+  }
+}
