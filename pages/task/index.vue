@@ -139,7 +139,7 @@
             <view class="time">2022.05.04 13:00</view>
             <navigator
               hover-class="none"
-              url="/subpkg_task/record/indexs"
+              url="/subpkg_task/record/index"
               class="action"
               >回车登记</navigator
             >
