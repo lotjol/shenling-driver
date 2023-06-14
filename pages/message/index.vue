@@ -80,7 +80,7 @@
       class="message-list"
       v-show="tabIndex === 0"
     >
-      <view class="scroll-wrapper">
+      <view class="scroll-view-wrapper">
         <view
           @click="readAll(currentTabData.contentType)"
           class="message-action"
@@ -120,6 +120,7 @@
       class="message-list"
       v-show="tabIndex === 1"
     >
+    <view class="scroll-view-wrapper">
       <view @click="readAll(currentTabData.contentType)" class="message-action">
         <text class="iconfont icon-clear"></text>
         全部已读
@@ -138,6 +139,7 @@
           </template>
         </uni-list-item>
       </uni-list>
+    </view>
     </scroll-view>
   </view>
 </template>

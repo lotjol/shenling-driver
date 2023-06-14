@@ -1,5 +1,12 @@
 .page-container {
+  display: flex;
+  flex-direction: column;
   padding: 30rpx 30rpx env(safe-area-inset-bottom);
+}
+
+.scroll-view {
+  flex: 1;
+  overflow: hidden;
 }
 
 .base-info {
@@ -16,5 +23,27 @@
     color: $uni-secondary-color;
     font-size: $uni-font-size-base;
     text-align: right;
+  }
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 30rpx calc(env(safe-area-inset-bottom) + 30rpx);
+  font-size: $uni-font-size-base;
+  background-color: #fff;
+
+  .button {
+    width: 100%;
+    height: 100rpx;
+    text-align: center;
+    line-height: 100rpx;
+    border-radius: 100rpx;
+    font-size: $uni-font-size-base;
+    color: #fff;
+    background-color: $uni-primary;
+    &[disabled] {
+      background-color: #fadcd9;
+    }
   }
 }

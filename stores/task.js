@@ -1,5 +1,5 @@
-import { ref } from 'vue'
-import { defineStore } from 'pinia'
+import { ref } from 'vue';
+import { defineStore } from 'pinia';
 
 export const useTaskStore = defineStore('task', () => {
   const recordData = ref({
@@ -14,16 +14,16 @@ export const useTaskStore = defineStore('task', () => {
     isAvailable: false,
     faultType: '',
     faultDescription: '',
-    faultImages: '',
+    faultImages: [],
     /*** 故障 ***/
 
     /*** 事故 ***/
     isAccident: false,
     accidentType: '',
     accidentDescription: '',
-    accidentImages: '',
+    accidentImages: []
     /*** 事故 ***/
-  })
+  });
 
-  return { recordData }
-})
+  return { recordData };
+});
