@@ -152,7 +152,7 @@ function onScanCode() {
       <navigator :url="`/subpkg_task/delivery/index?id=${taskDetail.id}`" hover-class="none" class="button primary">交付</navigator>
     </view>
     <view v-if="taskDetail.status === 4" class="toolbar">
-      <navigator :url="`/subpkg_task/record/index?id=${taskDetail.id}&departureTime=${taskDetail.actualDepartureTime}`" hover-class="none" class="button primary block">
+      <navigator :url="`/subpkg_task/record/index?id=${taskDetail.id}&startTime=${taskDetail.actualDepartureTime}`" hover-class="none" class="button primary block">
         回车登记
       </navigator>
     </view>

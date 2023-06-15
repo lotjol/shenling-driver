@@ -134,7 +134,7 @@ async function getTaskList() {
             <view class="label">提货时间</view>
             <view class="time">{{ item.actualDepartureTime }}</view>
             <navigator v-if="item.status === 2" :url="`/subpkg_task/delivery/index?id=${item.id}`" hover-class="none" class="action">交付</navigator>
-            <navigator v-if="item.status === 4" :url="`/subpkg_task/record/index?id=${item.id}&departureTime=${item.actualDepartureTime}`" hover-class="none" class="action">
+            <navigator v-if="item.status === 4" :url="`/subpkg_task/record/index?id=${item.id}&startTime=${item.actualDepartureTime}`" hover-class="none" class="action">
               回车登记
             </navigator>
           </view>

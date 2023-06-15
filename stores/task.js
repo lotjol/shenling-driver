@@ -3,6 +3,8 @@ import { defineStore } from 'pinia';
 
 export const useTaskStore = defineStore('task', () => {
   const recordData = ref({
+    startTime: '',
+    endTime: '',
     /*** 违章 ***/
     isBreakRules: false,
     breakRulesType: '',
@@ -11,17 +13,17 @@ export const useTaskStore = defineStore('task', () => {
     /*** 违章 ***/
 
     /*** 故障 ***/
-    isAvailable: false,
+    isFault: false,
     faultType: '',
     faultDescription: '',
-    faultImages: [],
+    faultImagesList: [],
     /*** 故障 ***/
 
     /*** 事故 ***/
     isAccident: false,
     accidentType: '',
     accidentDescription: '',
-    accidentImages: []
+    accidentImagesList: []
     /*** 事故 ***/
   });
 

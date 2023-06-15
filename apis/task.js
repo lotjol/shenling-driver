@@ -1,4 +1,4 @@
-import uniFetch from './uni-fetch'
+import uniFetch from './uni-fetch';
 
 export default {
   /**
@@ -12,7 +12,7 @@ export default {
    * @property {string} data.pageSize - 每页包含任务数据的条数
    */
   list(data) {
-    return uniFetch.get('/driver/tasks/list', data)
+    return uniFetch.get('/driver/tasks/list', data);
   },
 
   /**
@@ -20,8 +20,8 @@ export default {
    * @param {string} id - 任务ID
    */
   detail(id) {
-    if (!id) return
-    return uniFetch.get(`/driver/tasks/details/${id}`)
+    if (!id) return;
+    return uniFetch.get(`/driver/tasks/details/${id}`);
   },
 
   /**
@@ -32,7 +32,7 @@ export default {
    * @property {string} data.delayReason - 延迟原因
    */
   delay(data) {
-    return uniFetch.put('/driver/tasks/delay', data)
+    return uniFetch.put('/driver/tasks/delay', data);
   },
 
   /**
@@ -45,8 +45,8 @@ export default {
     return uniFetch.post('/driver/tasks/takeDelivery', {
       id,
       cargoPickUpPictureList,
-      cargoPictureList,
-    })
+      cargoPictureList
+    });
   },
 
   /**
@@ -59,7 +59,16 @@ export default {
     return uniFetch.post('/driver/tasks/deliver', {
       id,
       certificatePictureList,
-      deliverPictureList,
-    })
+      deliverPictureList
+    });
   },
-}
+
+  /**
+   * 回车登记
+   * @param {Object} data - 接口数据
+   */
+  record(data) {
+    if (!data.id) return;
+    return uniFetch.post('/driver/tasks/truckRegistration', data);
+  }
+};
