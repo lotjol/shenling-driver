@@ -30,7 +30,12 @@
       height: 8rpx;
       border-radius: 8rpx;
       transform: translate(-50%);
-      background-image: linear-gradient(210deg, #f25c4d 25%, #e52d21 100%, #e52d21 100%);
+      background-image: linear-gradient(
+        210deg,
+        #f25c4d 25%,
+        #e52d21 100%,
+        #e52d21 100%
+      );
     }
   }
 }
@@ -136,6 +141,10 @@
   }
 
   .link {
+    display: flex;
+    align-items: center;
+    height: 44rpx;
+    line-height: initial;
     padding: 0 20rpx;
     color: $uni-primary;
     border: 2rpx solid $uni-primary;

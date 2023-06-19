@@ -39,12 +39,15 @@
   }
 
   .button {
-    width: 414rpx;
+    width: 100%;
     height: 100rpx;
     line-height: 100rpx;
+    /* #ifdef APP */
+    padding-top: 4rpx;
+    /* #endif */
     margin: -20rpx auto 20rpx;
     color: #fff;
-    font-size: $uni-font-size-base;
+    font-size: $uni-font-size-big;
     border-radius: 100rpx;
     background-color: $uni-primary;
 

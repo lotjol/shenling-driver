@@ -98,13 +98,6 @@
         >{{ tab.text }}</text
       >
     </view>
-    <!-- #ifdef APP -->
-    <navigator
-      url="/uni_modules/uni-id-pages/pages/userinfo/realname-verify/realname-verify"
-    >
-      <button type="primary">实人认证</button>
-    </navigator>
-    <!-- #endif -->
     <scroll-view
       scroll-y
       refresher-enabled

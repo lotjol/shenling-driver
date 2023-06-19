@@ -147,7 +147,7 @@
     display: flex;
     justify-content: space-between;
     line-height: 1;
-    padding: 30rpx 30rpx;
+    padding: 30rpx 40rpx;
     background-color: #fff;
     font-size: $uni-font-size-base;
     color: $uni-main-color;
