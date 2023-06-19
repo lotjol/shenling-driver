@@ -30,10 +30,13 @@
     height: 100rpx;
     text-align: center;
     line-height: 100rpx;
+    /* #ifdef APP */
+    padding-top: 4rpx;
+    /* #endif */
     border-radius: 100rpx;
     margin-top: 60rpx;
     color: #fff;
-    font-size: $uni-font-size-base;
+    font-size: $uni-font-size-big;
     background-color: $uni-primary;
 
     &[disabled] {

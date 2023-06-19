@@ -41,12 +41,15 @@
 .submit-button {
   height: 100rpx;
   line-height: 100rpx;
+  /* #ifdef APP */
+  padding-top: 4rpx;
+  /* #endif */
   margin-top: 80rpx;
   border: none;
   color: #fff;
   background-color: $uni-primary;
   border-radius: 100rpx;
-  font-size: 36rpx;
+  font-size: $uni-font-size-big;
 }
 
 button[disabled] {

@@ -30,6 +30,10 @@
   }
 }
 
+.uni-textarea-placeholder {
+  font-size: $uni-font-size-small;
+}
+
 .toolbar {
   display: flex;
   justify-content: space-between;
@@ -42,8 +46,11 @@
     height: 100rpx;
     text-align: center;
     line-height: 100rpx;
+    /* #ifdef APP */
+    padding-top: 4rpx;
+    /* #endif */
     border-radius: 100rpx;
-    font-size: $uni-font-size-base;
+    font-size: $uni-font-size-big;
     color: #fff;
     background-color: $uni-primary;
     &[disabled] {

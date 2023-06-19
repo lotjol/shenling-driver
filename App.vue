@@ -41,6 +41,10 @@
     color: $uni-primary !important;
   }
 
+  .uni-textarea-placeholder {
+    font-size: $uni-font-size-base;
+  }
+
   .uni-scroll-view-content {
     height: auto !important;
   }

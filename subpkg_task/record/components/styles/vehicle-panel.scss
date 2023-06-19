@@ -16,7 +16,6 @@
 
   .label {
     color: $uni-main-color;
-    // margin-left: 20rpx;
   }
 
   .radio {
@@ -36,10 +35,12 @@
   font-size: $uni-font-size-small;
 
   .option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 180rpx;
     height: 70rpx;
-    text-align: center;
-    line-height: 72rpx;
+    padding-top: 1rpx;
     margin-top: 30rpx;
     margin-right: 38rpx;
     color: $uni-secondary-color;
