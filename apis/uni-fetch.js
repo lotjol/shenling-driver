@@ -3,8 +3,8 @@ import { useUserStore } from '@/stores/user'
 
 const uniFetch = createUniFetch({
   loading: { title: '正在加载...', mask: true },
-  // baseURL: 'https://slwl-api.itheima.net',
-  baseURL: 'http://172.16.39.134:9527',
+  baseURL: 'https://slwl-api.itheima.net',
+  // baseURL: 'http://172.16.39.134:9527',
   intercept: {
     request: (options) => {
       const userState = useUserStore()

@@ -79,7 +79,10 @@
   // 提交登录表单
   async function onSubmit() {
     // 调用登录接口
-    const { code, data: token } = await userApi.login(user.account, user.password)
+    const { code, data: token } = await userApi.login(
+      user.account,
+      user.password
+    )
     if (code !== 200) return uni.$utils.toast()
     // 记录登录状态信息
     userStore.token = token
@@ -98,8 +101,17 @@
       </view>
     </view>
 
-    <uni-forms :key="formIndex" class="login-form" :modelValue="user" ref="form">
-      <uni-forms-item v-for="field in formMeta.fields" :key="field.key" name="name">
+    <uni-forms
+      :key="formIndex"
+      class="login-form"
+      :modelValue="user"
+      ref="form"
+    >
+      <uni-forms-item
+        v-for="field in formMeta.fields"
+        :key="field.key"
+        name="name"
+      >
         <input
           v-model="user[field.key]"
           :type="field.type"
@@ -109,7 +121,9 @@
         />
         <text v-if="field.key === 'code'" class="text-button">获取验证码</text>
       </uni-forms-item>
-      <button class="submit-button" :disabled="disabled" @click="onSubmit">{{ formMeta.buttonText }}</button>
+      <button class="submit-button" :disabled="disabled" @click="onSubmit">
+        {{ formMeta.buttonText }}
+      </button>
     </uni-forms>
   </view>
 </template>

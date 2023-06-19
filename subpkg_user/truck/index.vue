@@ -4,7 +4,7 @@
   import userApi from '@/apis/user'
 
   // 车辆信息
-  const truckInfo = ref({ })
+  const truckInfo = ref({})
 
   // 页面加载完成
   onLoad(getTruckInfo)

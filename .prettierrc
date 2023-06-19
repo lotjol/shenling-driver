@@ -1,9 +1,5 @@
 {
-<<<<<<< Updated upstream
   "printWidth": 80,
-=======
-  "printWidth": 100,
->>>>>>> Stashed changes
   "tabWidth": 2,
   "useTabs": false,
   "semi": false,

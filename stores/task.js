@@ -7,21 +7,21 @@ export const useTaskStore = defineStore('task', () => {
     endTime: '',
     /*** 违章 ***/
     isBreakRules: false,
-    breakRulesType: '',
-    penaltyAmount: '',
-    deductPoints: '',
+    breakRulesType: null,
+    penaltyAmount: null,
+    deductPoints: null,
     /*** 违章 ***/
 
     /*** 故障 ***/
     isFault: false,
-    faultType: '',
+    faultType: null,
     faultDescription: '',
     faultImagesList: [],
     /*** 故障 ***/
 
     /*** 事故 ***/
     isAccident: false,
-    accidentType: '',
+    accidentType: null,
     accidentDescription: '',
     accidentImagesList: []
     /*** 事故 ***/

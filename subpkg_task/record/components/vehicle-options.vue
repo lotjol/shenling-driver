@@ -13,7 +13,7 @@ const props = defineProps({
 
 // 重置选项
 watch(props, (props) => {
-  if (!props.reset) onOptionSelect(-1, '');
+  if (!props.reset) onOptionSelect(-1, null);
 });
 
 // 当前被选中选项的索引
