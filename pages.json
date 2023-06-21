@@ -81,7 +81,6 @@
       }
     ]
   },
-  "middleware": ["auth"],
   "pages": [
     {
       "path": "pages/task/index",

@@ -18,7 +18,9 @@
         },
         /* 模块配置 */
         "modules" : {
-            "Push" : {}
+            "Push" : {},
+            "OAuth" : {},
+            "FacialRecognitionVerify" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -57,14 +59,17 @@
                         "hms" : {},
                         "icons" : {
                             "small" : {
-                                "ldpi" : "unpackage/res/icons/20x20.png",
-                                "mdpi" : "unpackage/res/icons/29x29.png",
-                                "hdpi" : "unpackage/res/icons/40x40.png",
-                                "xhdpi" : "unpackage/res/icons/58x58.png",
-                                "xxhdpi" : "unpackage/res/icons/60x60.png"
+                                "ldpi" : "unpackage/res/push/18x18.png",
+                                "mdpi" : "unpackage/res/push/24x24.png",
+                                "hdpi" : "unpackage/res/push/36x36.png",
+                                "xhdpi" : "unpackage/res/push/48x48.png",
+                                "xxhdpi" : "unpackage/res/push/72x72.png"
                             }
                         }
                     }
+                },
+                "oauth" : {
+                    "univerify" : {}
                 }
             },
             "icons" : {
@@ -167,7 +172,10 @@
             "urlCheck" : false
         },
         "usingComponents" : true,
-        "permission" : {}
+        "permission" : {},
+        "unipush" : {
+            "enable" : false
+        }
     },
     "mp-alipay" : {
         "usingComponents" : true
@@ -193,6 +201,9 @@
                     "key" : "FFABZ-43ZHH-72BDF-WAD6P-FDZYK-UHBOQ"
                 }
             }
+        },
+        "unipush" : {
+            "enable" : false
         }
     }
 }

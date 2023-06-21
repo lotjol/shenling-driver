@@ -79,7 +79,7 @@
   // 任务列表接口
   async function getTaskList() {
     const { code, data } = await taskApi.list(currentTabData.value)
-    if (code !== 200) return uni.$utils.toast()
+    if (code !== 200) return
     const renderData = tabsData.value[tabIndex.value]
     renderData.items = data.items || []
     renderData.empty = renderData.items.length === 0

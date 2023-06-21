@@ -1,4 +1,5 @@
 import { createUniFetch } from 'uni-app-fetch'
+import { tabBar } from '../pages.json'
 import { useUserStore } from '@/stores/user'
 
 const uniFetch = createUniFetch({
@@ -13,7 +14,26 @@ const uniFetch = createUniFetch({
         Authorization: userState.token,
       })
     },
-    response: ({ data }) => {
+    response: ({ statusCode, data }) => {
+      /**
+       * 判断路径是否为 tabBar 页面
+       * 如果是的情况使用 switchTab 跳转
+       * 否则使用 redirectTo 跳转
+       */
+      const tabBarPagePaths = tabBar.list.map(({ pagePath }) => pagePath)
+      const pageStack = getCurrentPages()
+      const redirectURL = pageStack[pageStack.length - 1].route
+
+      const routeType = tabBarPagePaths.includes(redirectURL)
+        ? 'switchTab'
+        : 'redirectTo'
+
+      if (statusCode === 401) {
+        return uni.redirectTo({
+          url: `/pages/login/index?routeType=${routeType}&redirectURL=/${redirectURL}`,
+        })
+      }
+
       return data
     },
   },

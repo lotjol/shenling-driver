@@ -10,9 +10,11 @@
   // 用户状态
   const userStore = useUserStore()
   // 表单项数据
-  const user = reactive({
+  const user = ref({
     account: '',
     password: '',
+    realName: '',
+    idCard: '',
   })
   // 登录类型索引值
   const formIndex = ref(0)
@@ -21,7 +23,8 @@
     {
       active: true,
       title: '手机号登录',
-      subTitle: '账号登录',
+      subTitle: '实人认证',
+      type: 'mobile',
       fields: [
         {
           type: 'text',
@@ -39,21 +42,22 @@
     },
     {
       active: false,
-      title: '账号登录',
+      title: '实人认证',
       subTitle: '手机号登陆',
+      type: 'face',
       fields: [
         {
-          type: 'number',
-          key: 'mobile',
-          placeholder: '请输入手机号',
+          type: 'text',
+          key: 'realName',
+          placeholder: '请输入真实姓名',
         },
         {
           type: 'number',
-          key: 'code',
-          placeholder: '请输入验证码',
+          key: 'idCard',
+          placeholder: '请输入身份证号',
         },
       ],
-      buttonText: '登录',
+      buttonText: '验证',
     },
   ])
   // 当前登录信息
@@ -62,11 +66,15 @@
   })
   // 按钮的禁用状态
   const disabled = computed(() => {
-    return !user.account || !user.password
+    return (
+      (user.value.account && user.value.password) ||
+      (user.value.realName && user.value.idCard)
+    )
   })
 
   // 切换登录类型
   function changeLoginType() {
+    user.value = {}
     formIndex.value = Math.abs(formIndex.value - 1)
   }
 
@@ -77,11 +85,46 @@
   })
 
   // 提交登录表单
-  async function onSubmit() {
+  async function onSubmit(type) {
+    if (type === 'face') {
+      // 获取设备信息
+      const metaInfo = uni.getFacialRecognitionMetaInfo()
+      // 调用云函数
+      uniCloud.callFunction({
+        name: 'uni-face-verify',
+        data: {
+          realName: user.value.realName,
+          idCard: user.value.idCard,
+          metaInfo,
+        },
+        success({ result }) {
+          uni.startFacialRecognitionVerify({
+            certifyId: result.certifyId,
+            progressBarColor: '#CC0000', //刷脸圈的颜色
+            screenOrientation: 'port', //认证界面UI朝向
+            success: (e) => {
+              console.log(JSON.stringify(e))
+            },
+            fail: (e) => {
+              console.log(JSON.stringify(e))
+            },
+            complete: (e) => {
+              console.log(JSON.stringify(e))
+            },
+          })
+        },
+        fail(err) {
+          console.log(err)
+        },
+      })
+
+      return
+    }
+
     // 调用登录接口
     const { code, data: token } = await userApi.login(
-      user.account,
-      user.password
+      user.value.account,
+      user.value.password
     )
     if (code !== 200) return uni.$utils.toast()
     // 记录登录状态信息
@@ -119,9 +162,13 @@
           class="uni-input-input"
           placeholder-style="color: #818181"
         />
-        <text v-if="field.key === 'code'" class="text-button">获取验证码</text>
+        <!-- <text v-if="field.key === 'code'" class="text-button">获取验证码</text> -->
       </uni-forms-item>
-      <button class="submit-button" :disabled="disabled" @click="onSubmit">
+      <button
+        class="submit-button"
+        :disabled="!disabled"
+        @click="onSubmit(formMeta.type)"
+      >
         {{ formMeta.buttonText }}
       </button>
     </uni-forms>

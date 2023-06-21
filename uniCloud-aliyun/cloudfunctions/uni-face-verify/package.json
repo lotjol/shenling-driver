@@ -1,0 +1,8 @@
+{
+  "name": "uni-face-verify",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {},
+    "uni-cloud-verify": {}
+  }
+}
