@@ -1,13 +1,13 @@
-import { defineConfig } from 'vite';
-import Uni from '@dcloudio/vite-plugin-uni';
-import UniMiddleware from './vite-plugin-uni-middleware';
+import { defineConfig } from 'vite'
+import uni from '@dcloudio/vite-plugin-uni'
+import uniMiddleware from './vite-plugin-uni-middleware'
 export default defineConfig({
   plugins: [
-    Uni(),
-    UniMiddleware({
+    uni(),
+    uniMiddleware({
       middlewareDir: './middleware',
       pagesJsonPath: './pages.json',
-      programRoot: __dirname
-    })
-  ]
-});
+      programRoot: __dirname,
+    }),
+  ],
+})
