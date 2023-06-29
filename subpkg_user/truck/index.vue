@@ -2,7 +2,14 @@
 
 <template>
   <view class="page-container">
-    <image class="truck-picture" mode="aspectFill" src="/static/uploads/truck_picture.jpg"></image>
+    <swiper class="truck-pictures" indicator-active-color="#fff" circular indicator-dots>
+      <swiper-item>
+        <image class="picture" mode="aspectFill" src="/static/uploads/truck_picture.jpg"></image>
+      </swiper-item>
+      <swiper-item>
+        <image class="picture" mode="aspectFill" src="/static/uploads/truck_picture.jpg"></image>
+      </swiper-item>
+    </swiper>
     <view class="truck-meta">
       <uni-list :border="false">
         <uni-list-item :border="false" title="车辆编号" rightText="3092889699900293" />

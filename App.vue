@@ -1,12 +1,12 @@
 <script>
   export default {
-    onLaunch: function () {
+    onLaunch: function() {
       // console.log('App Launch')
     },
-    onShow: function () {
+    onShow: function() {
       // console.log('App Show')
     },
-    onHide: function () {
+    onHide: function() {
       // console.log('App Hide')
     },
   }
@@ -83,6 +83,12 @@
   }
 
   .uni-list-item__extra-text {
+    max-width: 400rpx;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: right;
+    overflow: hidden;
+    white-space: nowrap;
     font-size: $uni-font-size-base !important;
     color: $uni-secondary-color !important;
   }

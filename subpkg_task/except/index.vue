@@ -37,27 +37,12 @@
               </uni-datetime-picker>
             </template>
           </uni-list-item>
-          <uni-list-item
-            show-arrow
-            clickable
-            @click="onLocationChoose"
-            title="上报位置"
-            rightText="请选择"
-          />
-          <uni-list-item
-            show-arrow
-            clickable
-            @click="onPopupOpen"
-            title="异常类型"
-            rightText="请选择"
-          />
+          <uni-list-item show-arrow clickable ellipsis="1" @click="onLocationChoose" title="上报位置" rightText="请选择" />
+          <uni-list-item show-arrow clickable @click="onPopupOpen" title="异常类型" rightText="请选择" />
           <uni-list-item direction="column" title="异常描述">
             <template v-slot:footer>
               <view class="textarea-wrapper">
-                <textarea
-                  class="textarea"
-                  placeholder="请输入异常描述"
-                ></textarea>
+                <textarea class="textarea" placeholder="请输入异常描述"></textarea>
                 <view class="words-count">0/50</view>
               </view>
             </template>
@@ -79,16 +64,10 @@
       <uni-list class="popup-action-sheet">
         <uni-list-item>
           <template v-slot:header>
-            <view style="margin-top: 4rpx; font-size: 32rpx; font-weight: 700"
-              >选择类型</view
-            >
+            <view style="margin-top: 4rpx; font-size: 32rpx; font-weight: 700">选择类型</view>
           </template>
           <template v-slot:footer>
-            <uni-icons
-              @click="onPopupClose"
-              type="closeempty"
-              size="20"
-            ></uni-icons>
+            <uni-icons @click="onPopupClose" type="closeempty" size="20"></uni-icons>
           </template>
         </uni-list-item>
         <uni-list-item title="发动机启动困难">
@@ -128,7 +107,7 @@
         </uni-list-item>
         <uni-list-item>
           <template v-slot:body>
-            <button class="button">确定</button>
+            <button @click="onPopupClose" class="button">确定</button>
           </template>
         </uni-list-item>
       </uni-list>

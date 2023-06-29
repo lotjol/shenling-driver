@@ -5,7 +5,7 @@
   padding-bottom: env(safe-area-inset-bottom);
 
   ::v-deep .uni-list {
-    margin: 30rpx;
+    padding: 10rpx 30rpx 0;
     border-radius: 16rpx;
     overflow: hidden;
   }
