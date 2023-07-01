@@ -1,0 +1,54 @@
+.uni-forms-item {
+	height: 100rpx;
+	margin-bottom: 20 !important;
+	border-bottom: 2rpx solid #eee;
+	box-sizing: border-box;
+}
+
+::v-deep .uni-forms-item__content {
+	display: flex;
+	align-items: center;
+}
+
+::v-deep input {
+	width: 100%;
+	font-size: $uni-font-size-base;
+	color: $uni-main-color;
+}
+
+::v-deep .uni-forms-item__error {
+	width: 100%;
+	padding-top: 10rpx;
+	border-top: 2rpx solid $uni-primary;
+	color: $uni-primary;
+	font-size: $uni-font-size-small;
+	transition: none;
+}
+
+.text-button {
+	width: 300rpx;
+	padding-left: 10rpx;
+	text-align: center;
+	font-size: $uni-font-size-small;
+	color: $uni-main-color;
+	border-left: 2rpx solid #eee;
+}
+
+.submit-button {
+	height: 100rpx;
+	line-height: 100rpx;
+	/* #ifdef APP */
+	padding-top: 4rpx;
+	/* #endif */
+	margin-top: 80rpx;
+	border: none;
+	color: #fff;
+	background-color: $uni-primary;
+	border-radius: 100rpx;
+	font-size: $uni-font-size-big;
+}
+
+button[disabled] {
+	background-color: #fadcd9;
+	color: #fff;
+}
