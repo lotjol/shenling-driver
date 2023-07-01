@@ -1,8 +1,7 @@
 {
   "condition": {
     "current": 0,
-    "list": [
-      {
+    "list": [{
         "name": "任务",
         "path": "pages/task/index",
         "query": ""
@@ -108,6 +107,12 @@
       "style": {
         "navigationBarTitleText": "消息"
       }
+    },
+    {
+      "path": "pages/pinia/index",
+      "style": {
+        "navigationBarTitleText": "Pinia示例"
+      }
     }
   ],
   "globalStyle": {
@@ -121,8 +126,7 @@
     "backgroundColor": "#fff",
     "color": "#818181",
     "selectedColor": "#EF4F3F",
-    "list": [
-      {
+    "list": [{
         "text": "任务",
         "pagePath": "pages/task/index",
         "iconPath": "static/tabbar/task_normal.png",
@@ -142,11 +146,9 @@
       }
     ]
   },
-  "subPackages": [
-    {
+  "subPackages": [{
       "root": "subpkg_task",
-      "pages": [
-        {
+      "pages": [{
           "path": "detail/index",
           "style": {
             "navigationBarTitleText": "任务详情"
@@ -198,19 +200,16 @@
     },
     {
       "root": "subpkg_message",
-      "pages": [
-        {
-          "path": "content/index",
-          "style": {
-            "navigationBarTitleText": "详情"
-          }
+      "pages": [{
+        "path": "content/index",
+        "style": {
+          "navigationBarTitleText": "详情"
         }
-      ]
+      }]
     },
     {
       "root": "subpkg_user",
-      "pages": [
-        {
+      "pages": [{
           "path": "truck/index",
           "style": {
             "navigationBarTitleText": "车辆信息"
