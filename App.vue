@@ -1,12 +1,12 @@
 <script>
   export default {
-    onLaunch: function() {
+    onLaunch: function () {
       // console.log('App Launch')
     },
-    onShow: function() {
+    onShow: function () {
       // console.log('App Show')
     },
-    onHide: function() {
+    onHide: function () {
       // console.log('App Hide')
     },
   }
@@ -95,5 +95,9 @@
 
   .uni-checkbox-input:hover {
     border-color: #d1d1d1 !important;
+  }
+
+  .uni-card {
+    margin-top: 0 !important;
   }
 </style>
