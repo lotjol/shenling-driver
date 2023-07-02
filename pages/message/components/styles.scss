@@ -102,7 +102,9 @@
   display: flex;
   align-items: center;
   height: 44rpx;
+  /* #ifdef */
   line-height: initial;
+  /* #endif */
   padding: 0 20rpx;
   color: $uni-primary;
   border: 2rpx solid $uni-primary;
