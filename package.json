@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "description": "A project developed with uni-app.",
   "main": "main.js",
-  "scripts": {
-    "prepare": "husky install"
-  },
   "keywords": [
     "uni-app",
     "android",
@@ -13,14 +10,5 @@
     "miniprogram"
   ],
   "author": "lotjol <botue@sina.com>",
-  "license": "ISC",
-  "devDependencies": {
-    "cz-conventional-changelog": "^3.3.0",
-    "husky": "^8.0.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  }
+  "license": "ISC"
 }
