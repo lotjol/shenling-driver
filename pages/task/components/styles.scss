@@ -1,0 +1,128 @@
+.scroll-view {
+  height: 100%;
+}
+
+.task-card {
+  padding: 24rpx 30rpx 0;
+  background-color: #fff;
+  border-radius: 16rpx;
+  margin: 15rpx 30rpx 30rpx;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.no {
+  font-size: $uni-font-size-base;
+  color: $uni-main-color;
+  font-weight: 500;
+}
+
+.status {
+  padding: 5rpx 20rpx 3rpx;
+  font-size: 24rpx;
+  color: $uni-primary;
+  border: 2rpx solid $uni-primary;
+  border-radius: 60rpx;
+}
+
+.body {
+  padding: 40rpx 0;
+  border-bottom: 1rpx solid #f4f4f4;
+}
+
+.timeline {
+  border-left: 2rpx dashed #f4f4f4;
+  margin-left: 30rpx;
+  padding: 0 30rpx;
+  position: relative;
+
+  &::before,
+  &::after {
+    position: absolute;
+    left: -24rpx;
+    width: 44rpx;
+    height: 44rpx;
+    text-align: center;
+    line-height: 44rpx;
+    font-size: 24rpx;
+    color: #fff;
+    border-radius: 50%;
+    background-color: pink;
+  }
+
+  &::before {
+    content: '起';
+    top: -1rpx;
+    background-color: $uni-main-color;
+  }
+
+  &::after {
+    content: '止';
+    bottom: -1rpx;
+    background-color: $uni-primary;
+  }
+}
+
+.line {
+  font-size: $uni-font-size-small;
+  color: $uni-secondary-color;
+  margin-top: 30rpx;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.footer {
+  padding: 20rpx 0;
+  position: relative;
+
+  &.flex {
+    display: flex;
+  }
+}
+
+.label,
+.time {
+  font-size: $uni-font-size-small;
+  margin-right: 15rpx;
+  color: $uni-secondary-color;
+}
+
+.action {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  height: 64rpx;
+  padding: 0 40rpx;
+  background-color: $uni-primary;
+  color: #fff;
+  font-size: $uni-font-size-small;
+  border-radius: 64rpx;
+  transform: translate(0, -50%);
+
+  &[disabled] {
+    background-color: #fadcd9;
+  }
+}
+
+.task-blank {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  width: 201rpx;
+  text-align: center;
+  padding-top: 130rpx;
+  background-image: url(https://sl-driver.oss-cn-hangzhou.aliyuncs.com/images/blank%402x.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  font-size: 24rpx;
+  color: $uni-secondary-color;
+  transform: translate(-50%, -100%);
+}
