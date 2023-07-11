@@ -83,7 +83,7 @@
   }
 
   .uni-list-item__extra-text {
-    max-width: 400rpx;
+    max-width: 360rpx;
     text-overflow: ellipsis;
     overflow: hidden;
     text-align: right;

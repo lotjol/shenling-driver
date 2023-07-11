@@ -1,3 +1,4 @@
+<script setup></script>
 <template>
   <view class="page-container">
     <view class="receipt-info">
@@ -7,8 +8,6 @@
     <button disabled class="button">提交</button>
   </view>
 </template>
-
-<script></script>
 
 <style lang="scss" scoped>
   .page-container {
@@ -39,7 +38,8 @@
     font-size: $uni-font-size-big;
     background-color: $uni-primary;
 
-    &[disabled] {
+    &[disabled],
+    &.disabled {
       color: #fff;
       background-color: #fadcd9;
     }

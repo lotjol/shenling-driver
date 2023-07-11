@@ -28,34 +28,3 @@
   font-size: $uni-font-size-small !important;
   margin-left: 4rpx;
 }
-
-.vehicle-options {
-  display: flex;
-  flex-wrap: wrap;
-  font-size: $uni-font-size-small;
-
-  .option {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 180rpx;
-    height: 70rpx;
-    padding-top: 1rpx;
-    margin-top: 30rpx;
-    margin-right: 38rpx;
-    color: $uni-secondary-color;
-    border: 2rpx solid $uni-bg-color;
-    background-color: $uni-bg-color;
-    border-radius: 20rpx;
-
-    &:nth-child(3n) {
-      margin-right: 0;
-    }
-
-    &.active {
-      color: $uni-primary;
-      border: 2rpx solid $uni-primary;
-      background-color: #ffe0dd;
-    }
-  }
-}

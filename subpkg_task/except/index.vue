@@ -14,21 +14,21 @@
     uni.chooseLocation({})
   }
 
+  // 点击类型弹层确认按钮
+  function onPopupConfirm() {
+    popup.value.close()
+  }
+
   // 打开弹层
   function onPopupOpen() {
     popup.value.open()
-  }
-
-  // 关闭弹层
-  function onPopupClose() {
-    popup.value.close()
   }
 </script>
 
 <template>
   <view class="page-container">
     <scroll-view class="scroll-view" scroll-y>
-      <view class="scroll-view-wrapper">
+      <view style="margin: 30rpx" class="scroll-view-wrapper">
         <uni-list :border="false">
           <uni-list-item show-arrow title="异常时间">
             <template v-slot:footer>
@@ -37,19 +37,39 @@
               </uni-datetime-picker>
             </template>
           </uni-list-item>
-          <uni-list-item show-arrow clickable ellipsis="1" @click="onLocationChoose" title="上报位置" rightText="请选择" />
-          <uni-list-item show-arrow clickable @click="onPopupOpen" title="异常类型" rightText="请选择" />
+
+          <uni-list-item
+            show-arrow
+            clickable
+            ellipsis="1"
+            @click="onLocationChoose"
+            title="上报位置"
+            rightText="请选择"
+          />
+          <uni-list-item
+            show-arrow
+            clickable
+            @click="onPopupOpen"
+            title="异常类型"
+            rightText="请选择"
+          />
           <uni-list-item direction="column" title="异常描述">
             <template v-slot:footer>
               <view class="textarea-wrapper">
-                <textarea class="textarea" placeholder="请输入异常描述"></textarea>
+                <textarea
+                  class="textarea"
+                  placeholder="请输入异常描述"
+                ></textarea>
                 <view class="words-count">0/50</view>
               </view>
             </template>
           </uni-list-item>
-        </uni-list>
-        <uni-list class="upload-picture">
-          <uni-list-item direction="column" title="上传图片（最多6张）">
+          <uni-list-item
+            :border="false"
+            style="margin-top: -30rpx"
+            direction="column"
+            title="上传图片（最多6张）"
+          >
             <template v-slot:footer>
               <uni-file-picker limit="6"></uni-file-picker>
             </template>
@@ -60,14 +80,12 @@
     <view class="fixbar">
       <button class="button disable">提交</button>
     </view>
-    <uni-popup ref="popup" type="bottom">
+    <!-- 异常类型弹层 -->
+    <uni-popup ref="popup" :mask-click="false" type="bottom">
       <uni-list class="popup-action-sheet">
         <uni-list-item>
           <template v-slot:header>
-            <view style="margin-top: 4rpx; font-size: 32rpx; font-weight: 700">选择类型</view>
-          </template>
-          <template v-slot:footer>
-            <uni-icons @click="onPopupClose" type="closeempty" size="20"></uni-icons>
+            <view class="header">选择类型</view>
           </template>
         </uni-list-item>
         <uni-list-item title="发动机启动困难">
@@ -107,7 +125,7 @@
         </uni-list-item>
         <uni-list-item>
           <template v-slot:body>
-            <button @click="onPopupClose" class="button">确定</button>
+            <button @click="onPopupConfirm" class="button">确定</button>
           </template>
         </uni-list-item>
       </uni-list>

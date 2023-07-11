@@ -14,7 +14,9 @@
       <cover-view class="timeline">
         <cover-view class="start">起</cover-view>
         <cover-view class="end">止</cover-view>
-        <cover-view class="line">北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</cover-view>
+        <cover-view class="line"
+          >北京市昌平区回龙观街道西三旗桥东金燕龙写字楼8877号</cover-view
+        >
         <cover-view class="line">河南省郑州市路北区北清路99号</cover-view>
       </cover-view>
     </cover-view>

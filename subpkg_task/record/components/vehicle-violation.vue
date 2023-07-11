@@ -1,47 +1,62 @@
 <script setup>
   import { ref } from 'vue'
-
-  // 选中 tab 对应的行列索引
-  const tabIndex = ref('')
+  import vehicleOptions from './vehicle-options'
 
   // 是不显示详细的选项
   const show = ref(false)
-
   // 构造数据
   const initialData = ref([
     {
       title: '违章类型',
-      types: ['闯红灯', '无证驾驶', '超载', '酒后驾驶', '超速驾驶'],
+      key: 'breakRulesType',
+      types: [
+        { id: 1, text: '闯红灯' },
+        { id: 2, text: '无证驾驶' },
+        { id: 3, text: '超载' },
+        { id: 4, text: '酒后驾驶' },
+        { id: 5, text: '超速驾驶' },
+        { id: 6, text: '其它' },
+      ],
     },
     {
       title: '罚款金额',
-      types: ['0元', '100元', '200元', '300元', '500元', '1000元', '2000元'],
+      key: 'penaltyAmount',
+      types: [
+        { id: '0', text: '0元' },
+        { id: '100', text: '100元' },
+        { id: '200', text: '200元' },
+        { id: '300', text: '300元' },
+        { id: '500', text: '500元' },
+        { id: '1000', text: '1000元' },
+        { id: '2000', text: '2000元' },
+      ],
     },
     {
       title: '扣分',
+      key: 'deductPoints',
       types: ['0分', '1分', '2分', '3分', '6分', '12分'],
+      types: [
+        { id: '0', text: '0分' },
+        { id: '1', text: '1分' },
+        { id: '2', text: '2分' },
+        { id: '3', text: '3分' },
+        { id: '6', text: '6分' },
+        { id: '12', text: '12分' },
+      ],
     },
   ])
 
+  // 显示/隐藏选项
   function onRadioChange(ev) {
     // 展开详细的选项
     show.value = !!parseInt(ev.detail.value)
-    // 清空已选中的选项
-    tabIndex.value = -1
-    // 传递数据到父组件
-  }
-
-  function onOptionSelect(option, row, col) {
-    // 设置选中状态
-    tabIndex.value = [row, col].join('|')
-    // 传递选中的数据
   }
 </script>
 
 <template>
   <view class="vehicle-panel">
     <view class="vehicle-panel-header">
-      <view class="label">车辆违章</view>
+      <view class="label">交通违章</view>
       <radio-group class="radio-group" @change="onRadioChange">
         <label class="label">
           <radio class="radio" value="1" color="#EF4F3F" />
@@ -56,23 +71,13 @@
     <view v-show="show" class="vehicle-panel-body">
       <uni-list>
         <uni-list-item
-          v-for="(item, row) in initialData"
+          v-for="item in initialData"
           direction="column"
           :border="false"
           :title="item.title"
         >
           <template v-slot:footer>
-            <view class="vehicle-options">
-              <view
-                @click="onOptionSelect(option, row, col)"
-                :class="{ active: tabIndex === row + '|' + col }"
-                class="option"
-                v-for="(option, col) in item.types"
-                :key="option"
-              >
-                {{ option }}
-              </view>
-            </view>
+            <vehicle-options :types="item.types" />
           </template>
         </uni-list-item>
       </uni-list>
