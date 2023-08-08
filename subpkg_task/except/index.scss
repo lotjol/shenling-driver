@@ -16,7 +16,7 @@
   }
 
   .picker-value {
-    width: 400rpx;
+    width: 360rpx;
     color: $uni-secondary-color;
     font-size: $uni-font-size-base;
     text-align: right;
@@ -76,6 +76,12 @@
   .popup-action-sheet {
     margin-bottom: 0;
     border-radius: 32rpx 32rpx 0 0;
+
+    .header {
+      margin-top: 4rpx;
+      font-size: 32rpx;
+      font-weight: 700;
+    }
 
     .checkbox {
       width: 46rpx;

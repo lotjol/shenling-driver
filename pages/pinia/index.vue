@@ -1,9 +1,17 @@
-<script setup></script>
+<script setup>
+  import { storeToRefs } from 'pinia'
+  import { useCounterStore } from '@/stores/counter'
+
+  // 获取 store 对象
+  const store = useCounterStore()
+  const { count } = storeToRefs(store)
+  const { increment, decrement } = store
+</script>
 <template>
   <view class="counter">
-    <button class="button" type="primary">-</button>
-    <input class="input" type="text" />
-    <button class="button" type="primary">+</button>
+    <button @click="decrement" class="button" type="primary">-</button>
+    <input class="input" v-model="count" type="text" />
+    <button @click="increment" class="button" type="primary">+</button>
   </view>
 </template>
 

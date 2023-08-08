@@ -7,6 +7,7 @@
   position: relative;
   padding: 30rpx;
   background-color: #fff;
+  border-bottom: 1rpx solid #eee;
 
   .icon-scan,
   .icon-search {
@@ -71,7 +72,13 @@
 }
 
 .basic-info {
+  .hr {
+    border-top: 1rpx solid #f4f4f4;
+    margin: 20rpx 0;
+  }
+
   .timeline {
+    min-height: 110rpx;
     position: relative;
     padding: 0 140rpx 0 30rpx;
     margin-left: 30rpx;

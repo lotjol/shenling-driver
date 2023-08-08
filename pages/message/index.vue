@@ -40,14 +40,14 @@
       v-show="tabIndex === 0"
       v-if="tabMetas[0].rendered"
     >
-      <sl-notify></sl-notify>
+      <sl-notify />
     </view>
     <view
       class="message-list"
       v-show="tabIndex === 1"
       v-if="tabMetas[1].rendered"
     >
-      <sl-announce></sl-announce>
+      <sl-announce />
     </view>
   </view>
 </template>

@@ -8,18 +8,9 @@
   // 标签页索引
   const tabIndex = ref(0)
   const tabMetas = reactive([
-    {
-      title: '待提货',
-      rendered: true,
-    },
-    {
-      title: '在途',
-      rendered: false,
-    },
-    {
-      title: '已完成',
-      rendered: false,
-    },
+    { title: '待提货', rendered: true },
+    { title: '在途', rendered: false },
+    { title: '已完成', rendered: false },
   ])
 
   // 切换 Tab 标签页

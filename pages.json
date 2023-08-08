@@ -228,6 +228,12 @@
           }
         },
         {
+          "path": "verify/index",
+          "style": {
+            "navigationBarTitleText": "实人认证"
+          }
+        },
+        {
           "path": "mobile/index",
           "style": {
             "navigationBarTitleText": "换绑手机"

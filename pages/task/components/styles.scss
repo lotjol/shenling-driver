@@ -107,7 +107,7 @@
   border-radius: 64rpx;
   transform: translate(0, -50%);
 
-  &[disabled] {
+  &.disabled {
     background-color: #fadcd9;
   }
 }
